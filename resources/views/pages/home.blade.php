@@ -65,10 +65,11 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.webp" alt=""> -->
-          <h1 class="sitename">Clinic</h1>
+          <!-- <h1 class="sitename">Clinic</h1> -->
+          <img src="{{ asset('logo-header.svg') }}" alt="Modern Healthcare Facility" class="img-fluid">
         </a>
 
-        <nav id="navmenu" class="navmenu">
+        <!-- <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -108,7 +109,7 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
+        </nav> -->
 
       </div>
 
@@ -237,7 +238,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
             <div class="about-content">
-              <h2 class="section-heading">Compassionate Care, Advanced Medicine</h2>
+              <h2 class="section-heading">Visi Misi</h2>
               <p class="lead-text">For over two decades, we've been dedicated to providing exceptional healthcare that
                 combines cutting-edge medical technology with the personal touch our patients deserve.</p>
 
@@ -305,7 +306,7 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Featured Departments</h2>
+        <h2>Poli</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
       </div><!-- End Section Title -->
 
@@ -365,7 +366,7 @@
             </div>
           </div><!-- End Specialty Card -->
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <!-- <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="department-highlight">
               <div class="highlight-icon">
                 <i class="bi bi-shield-plus"></i>
@@ -380,9 +381,9 @@
               </ul>
               <a href="department-details.html" class="highlight-cta">Learn More</a>
             </div>
-          </div><!-- End Department Highlight -->
+          </div>End Department Highlight -->
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <!-- <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="department-highlight">
               <div class="highlight-icon">
                 <i class="bi bi-people"></i>
@@ -397,9 +398,9 @@
               </ul>
               <a href="department-details.html" class="highlight-cta">Learn More</a>
             </div>
-          </div><!-- End Department Highlight -->
+          </div>End Department Highlight -->
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <!-- <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
             <div class="department-highlight">
               <div class="highlight-icon">
                 <i class="bi bi-activity"></i>
@@ -414,7 +415,7 @@
               </ul>
               <a href="department-details.html" class="highlight-cta">Learn More</a>
             </div>
-          </div><!-- End Department Highlight -->
+          </div>End Department Highlight -->
 
         </div>
 

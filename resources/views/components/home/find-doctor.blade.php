@@ -1,68 +1,113 @@
-@props(['doctors'])
+<!-- Find A Doctor Section -->
+    <section id="find-a-doctor" class="find-a-doctor section">
 
-<!-- Doctors Section -->
-<section id="doctors" class="doctors section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Cari Dokter</h2>
+        <p>Temukan dokter berpengalaman dan profesional sesuai kebutuhan kesehatan Anda</p>
+      </div><!-- End Section Title -->
 
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Doctors</h2>
-    <p>Find Our Expert Doctors</p>
-  </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-  <div class="container">
-
-    <div class="row gy-4">
-
-      @forelse($doctors as $doctor)
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="team-member">
-          <div class="member-img">
-            @if($doctor->photo)
-              <img src="{{ asset('storage/' . $doctor->photo) }}" class="img-fluid" alt="{{ $doctor->name }}">
-            @else
-              <img src="{{ asset('assets/img/doctors/doctors-1.jpg') }}" class="img-fluid" alt="{{ $doctor->name }}">
-            @endif
-            <div class="social">
-              @if($doctor->status === 'available')
-                <span class="badge bg-success">Available</span>
-              @elseif($doctor->status === 'busy')
-                <span class="badge bg-warning">Busy</span>
-              @else
-                <span class="badge bg-danger">Offline</span>
-              @endif
+        <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-8 text-center">
+            <div class="search-section">
+              <h3 class="search-title">Temukan Dokter Anda</h3>
+              <p class="search-subtitle">Cari melalui direktori lengkap profesional medis berpengalaman kami
+              </p>
+              <form class="search-form" action="#!" method="GET">
+                <div class="search-input-group">
+                  <div class="input-wrapper">
+                    <i class="bi bi-person"></i>
+                    <input type="text" class="form-control" name="search" placeholder="Cari nama dokter">
+                  </div>
+                  <div class="select-wrapper">
+                    <i class="bi bi-heart-pulse"></i>
+                    <select class="form-select" name="specialization">
+                      <option value="">Semua Spesialisasi</option>
+                      @php
+                        $specializations = \App\Models\Doctor::distinct()->pluck('specialization')->filter();
+                      @endphp
+                      @foreach($specializations as $spec)
+                        <option value="{{ $spec }}">{{ $spec }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <button type="submit" class="search-btn">
+                    <i class="bi bi-search"></i>
+                    Cari Dokter
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-          <div class="member-info">
-            <h4>{{ $doctor->name }}</h4>
-            <span>{{ $doctor->specialization }}</span>
-            @if($doctor->experience_years)
-              <p class="text-muted small">{{ $doctor->experience_years }} years experience</p>
-            @endif
-            @if($doctor->rating)
-              <div class="rating">
+        </div>
+
+        <div class="doctors-grid" data-aos="fade-up" data-aos-delay="300">
+          @forelse($doctors as $doctor)
+          <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="{{ ($loop->index % 6) * 100 + 100 }}">
+            <div class="profile-header">
+              <div class="doctor-avatar">
+                @if($doctor->photo)
+                  <img src="{{ asset('storage/' . $doctor->photo) }}" alt="{{ $doctor->name }}" class="img-fluid">
+                @else
+                  <img src="{{ asset('assets/img/health/staff-' . (($loop->index % 6) + 1) * 2 . '.webp') }}" alt="{{ $doctor->name }}" class="img-fluid">
+                @endif
+                <div class="status-indicator {{ $doctor->status ?? 'offline' }}"></div>
+              </div>
+              <div class="doctor-details">
+                <h4>{{ $doctor->name }}</h4>
+                <span class="specialty-tag">{{ $doctor->specialization ?? 'Spesialis' }}</span>
+                <div class="experience-info">
+                  <i class="bi bi-award"></i>
+                  <span>{{ $doctor->experience_years ?? 0 }} tahun pengalaman</span>
+                </div>
+              </div>
+            </div>
+            <div class="rating-section">
+              <div class="stars">
+                @php
+                  $rating = $doctor->rating ?? 0;
+                  $fullStars = floor($rating);
+                  $hasHalfStar = ($rating - $fullStars) >= 0.5;
+                @endphp
                 @for($i = 1; $i <= 5; $i++)
-                  @if($i <= $doctor->rating)
-                    <i class="bi bi-star-fill text-warning"></i>
+                  @if($i <= $fullStars)
+                    <i class="bi bi-star-fill"></i>
+                  @elseif($i == $fullStars + 1 && $hasHalfStar)
+                    <i class="bi bi-star-half"></i>
                   @else
-                    <i class="bi bi-star text-warning"></i>
+                    <i class="bi bi-star"></i>
                   @endif
                 @endfor
-                <span class="text-muted small">({{ $doctor->reviews_count ?? 0 }} reviews)</span>
               </div>
-            @endif
+              <span class="rating-score">{{ $doctor->rating ?? 0 }}</span>
+              <span class="review-count">({{ $doctor->reviews_count ?? 0 }} reviews)</span>
+            </div>
+            <div class="action-buttons">
+              <a href="#!" class="btn-secondary">Lihat Detail</a>
+              <a href="#!" class="btn-primary">Pesan Jadwal</a>
+            </div>
+          </div><!-- End Doctor Profile -->
+          @empty
+          <div class="col-12">
+            <x-empty-state 
+              icon="bi bi-person-heart" 
+              title="Dokter belum tersedia" 
+              subtitle="Daftar dokter kami akan segera ditampilkan"
+            />
           </div>
+          @endforelse
+
         </div>
-      </div><!-- End Team Member -->
-      @empty
-      <div class="col-12">
-        <div class="alert alert-info text-center">
-          <i class="bi bi-info-circle me-2"></i>No doctors found at the moment.
+
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
+          <a href="#!" class="btn-view-all">
+            Lihat Semua Dokter
+            <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
+
       </div>
-      @endforelse
 
-    </div>
-
-  </div>
-
-</section><!-- /Doctors Section -->
+    </section><!-- /Find A Doctor Section -->

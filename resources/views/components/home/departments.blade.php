@@ -37,8 +37,12 @@
             </div>
           </div><!-- End Specialty Card -->
           @empty
-          <div class="col-12 text-center">
-            <p>No departments available at the moment.</p>
+          <div class="col-12">
+            <x-empty-state 
+              icon="bi bi-hospital" 
+              title="Poliklinik belum tersedia" 
+              subtitle="Informasi poliklinik akan ditampilkan segera"
+            />
           </div>
           @endforelse
 

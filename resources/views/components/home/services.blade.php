@@ -1,9 +1,9 @@
-<!-- @props(['services'])
+@props(['services'])
     <section id="featured-services" class="featured-services section">
 
       <div class="container section-title" data-aos="fade-up">
-        <h2>Featured Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Layanan Unggulan</h2>
+        <p>Layanan kesehatan terpadu dengan standar internasional dan tim profesional berpengalaman</p>
       </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -26,12 +26,15 @@
               <div class="service-details">
                 <h2>{{ $featured->title }}</h2>
                 <p>{{ $featured->description }}</p>
-                <a href="{{ $featured->link ?? '#!' }}" class="main-cta">Explore Our Services</a>
+                <a href="{{ $featured->link ?? '#!' }}" class="main-cta">Pelajari Layanan Kami</a>
               </div>
               @else
-              <div class="service-details">
-                <h2>Comprehensive Healthcare Excellence</h2>
-                <p>We provide top-notch medical services.</p>
+              <div class="service-details empty-featured-service">
+                <x-empty-state 
+                  icon="bi bi-briefcase-medical" 
+                  title="Layanan unggulan belum tersedia" 
+                  subtitle="Informasi layanan akan segera ditampilkan di sini"
+                />
               </div>
               @endif
             </div>
@@ -39,7 +42,7 @@
 
           <div class="col-lg-4" data-aos="fade-left" data-aos-delay="300">
             <div class="services-sidebar">
-              @foreach($services->where('is_featured', false)->take(3) as $service)
+              @forelse($services->where('is_featured', false)->take(3) as $service)
               <div class="service-item" data-aos="fade-up" data-aos-delay="{{ 400 + ($loop->index * 100) }}">
                 <div class="service-icon-wrapper">
                   <i class="{{ $service->icon ?? 'bi bi-capsule' }}"></i>
@@ -47,14 +50,18 @@
                 <div class="service-info">
                   <h4>{{ $service->title }}</h4>
                   <p>{{ Str::limit($service->description, 80) }}</p>
-                  <a href="{{ $service->link ?? '#!' }}" class="service-link">Learn More</a>
+                  <a href="{{ $service->link ?? '#!' }}" class="service-link">Selengkapnya</a>
                 </div>
               </div>
-              @endforeach
-              @if($services->where('is_featured', false)->count() == 0)
-                <div class="p-4"><p>More services coming soon.</p></div>
-              @endif
-
+              @empty
+              <div class="services-empty">
+                <x-empty-state 
+                  icon="bi bi-list-check" 
+                  title="Layanan lainnya belum tersedia" 
+                  subtitle="Terus pantau untuk update terbaru"
+                />
+              </div>
+              @endforelse
             </div>
           </div>
 
@@ -62,7 +69,7 @@
 
         <div class="specialties-grid" data-aos="fade-up" data-aos-delay="300">
           <div class="row align-items-center">
-             @foreach($services->skip(4)->take(4) as $service)
+             @forelse($services->skip(4)->take(4) as $service)
             <div class="col-lg-3 col-md-6">
               <div class="specialty-card">
                 <div class="specialty-image">
@@ -74,10 +81,34 @@
                 </div>
               </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-12">
+              <x-empty-state 
+                icon="bi bi-grid-3x3-gap" 
+                title="Layanan tambahan belum tersedia" 
+                subtitle="Daftar lengkap layanan kami akan ditampilkan segera"
+              />
+            </div>
+            @endforelse
           </div>
         </div>
 
       </div>
 
-    </section> -->
+    </section>
+
+    <style>
+      .empty-featured-service {
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .services-empty {
+        padding: 2rem;
+      }
+    </style>
+

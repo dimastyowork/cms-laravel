@@ -16,12 +16,12 @@ class HomeController extends Controller
         
         $doctors = Doctor::query()
             ->latest()
-            ->take(4)
+            ->take(12)
             ->get();
 
         $departments = Unit::query()
             ->latest()
-            ->take(4) // Or however many you want to show
+            ->take(10) // Or however many you want to show
             ->get();
 
         $featuredServices = Service::query()

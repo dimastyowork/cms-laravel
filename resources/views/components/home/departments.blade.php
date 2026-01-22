@@ -9,43 +9,55 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row g-5">
-          @forelse($departments as $department)
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
-            <div class="specialty-card">
-              <div class="specialty-content">
-                <div class="specialty-meta">
-                  <span class="specialty-label">Specialized Care</span>
-                </div>
-                <h3>{{ $department->name }}</h3>
-                <p>{{ Str::limit($department->description, 100) }}</p>
-                <div class="specialty-features">
-                  <!-- Optional: features if added to model, or static for now -->
-                  <!-- <span><i class="bi bi-check-circle-fill"></i>24/7 Emergency Cardiac Care</span> -->
-                </div>
-                <!-- Link to details if needed, for now just # or show -->
-                <a href="#!" class="specialty-link">
-                  Explore {{ $department->name }} <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
-              <div class="specialty-visual">
-                <img src="{{ $department->image ? asset('storage/' . $department->image) : asset('assets/img/health/cardiology-1.webp') }}" alt="{{ $department->name }}" class="img-fluid">
-                <div class="visual-overlay">
-                  <i class="bi bi-heart-pulse"></i>
-                </div>
+        <div class="departments-carousel swiper" id="departmentsSwiper" data-aos="fade-up" data-aos-delay="200">
+          <div class="swiper-wrapper">
+            @php
+              $departmentChunks = $departments->chunk(2);
+            @endphp
+            @forelse($departmentChunks as $chunk)
+            <div class="swiper-slide">
+              <div class="slide-grid">
+                @foreach($chunk as $department)
+                <div class="specialty-card" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 100 }}">
+                  <div class="specialty-content">
+                    <div class="specialty-meta">
+                      <span class="specialty-label">Specialized Care</span>
+                    </div>
+                    <h3>{{ $department->name }}</h3>
+                    <p>{{ Str::limit($department->description, 100) }}</p>
+                    <div class="specialty-features">
+                    </div>
+                    <a href="#!" class="specialty-link">
+                      Explore {{ $department->name }} <i class="bi bi-arrow-right"></i>
+                    </a>
+                  </div>
+                  <div class="specialty-visual">
+                    <img src="{{ $department->image ? asset('storage/' . $department->image) : asset('assets/img/health/cardiology-1.webp') }}" alt="{{ $department->name }}" class="img-fluid">
+                    <div class="visual-overlay">
+                      <i class="bi bi-heart-pulse"></i>
+                    </div>
+                  </div>
+                </div><!-- End Specialty Card -->
+                @endforeach
               </div>
             </div>
-          </div><!-- End Specialty Card -->
-          @empty
-          <div class="col-12">
-            <x-empty-state 
-              icon="bi bi-hospital" 
-              title="Poliklinik belum tersedia" 
-              subtitle="Informasi poliklinik akan ditampilkan segera"
-            />
+            @empty
+            <div class="swiper-slide">
+              <div class="col-12">
+                <x-empty-state 
+                  icon="bi bi-hospital" 
+                  title="Poliklinik belum tersedia" 
+                  subtitle="Informasi poliklinik akan ditampilkan segera"
+                />
+              </div>
+            </div>
+            @endforelse
           </div>
-          @endforelse
-
+          
+          <!-- Swiper Navigation -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
         </div>
 
         <div class="emergency-banner" data-aos="fade-up" data-aos-delay="400">

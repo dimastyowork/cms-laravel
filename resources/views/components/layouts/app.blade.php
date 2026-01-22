@@ -30,6 +30,22 @@
 
   <!-- Main CSS File -->
   <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/empty-states.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/doctors-carousel.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/departments-carousel.css') }}" rel="stylesheet">
+
+  <style>
+    @media (min-width: 1200px) {
+      .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1080px;
+      }
+    }
+    @media (min-width: 1400px) {
+      .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1240px;
+      }
+    }
+  </style>
 
   <!-- =======================================================
   * Template Name: Clinic
@@ -48,14 +64,13 @@
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
           <i class="bi bi-envelope d-flex align-items-center"><a
-              href="mailto:{{ optional($settings)->email ?? 'contact@example.com' }}">{{ optional($settings)->email ?? 'contact@example.com' }}</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ optional($settings)->phone ?? '+1 5589 55488 55' }}</span></i>
+              href="mailto:{{ optional($settings)->email ?? '-' }}">{{ optional($settings)->email ?? '-' }}</a></i>
+          <i class="bi bi-phone d-flex align-items-center ms-4"><span>{{ optional($settings)->phone ?? '-' }}</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
           @if(optional($settings)->twitter)<a href="{{ $settings->twitter }}" class="twitter"><i class="bi bi-twitter-x"></i></a>@endif
           @if(optional($settings)->facebook)<a href="{{ $settings->facebook }}" class="facebook"><i class="bi bi-facebook"></i></a>@endif
           @if(optional($settings)->instagram)<a href="{{ $settings->instagram }}" class="instagram"><i class="bi bi-instagram"></i></a>@endif
-          <a href="#!" class="linkedin"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
     </div><!-- End Top Bar -->
@@ -141,20 +156,20 @@
                   >
               </a>
 
-              <p class="brand-description">{{ optional($settings)->description ?? 'Crafting exceptional digital experiences through thoughtful design and innovative solutions that elevate your brand presence.' }}</p>
+              <p class="brand-description">{{ optional($settings)->description ?? '' }}</p>
 
               <div class="contact-info mt-5">
                 <div class="contact-item">
                   <i class="bi bi-geo-alt"></i>
-                  <span>{{ optional($settings)->address ?? '123 Creative Boulevard, Design District, NY 10012' }}</span>
+                  <span>{{ optional($settings)->address ?? '-' }}</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-telephone"></i>
-                  <span>{{ optional($settings)->phone ?? '+1 (555) 987-6543' }}</span>
+                  <span>{{ optional($settings)->phone ?? '-' }}</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-envelope"></i>
-                  <span>{{ optional($settings)->email ?? 'hello@designstudio.com' }}</span>
+                  <span>{{ optional($settings)->email ?? '-' }}</span>
                 </div>
               </div>
             </div>
@@ -177,19 +192,6 @@
                     </div>
                   </div>
                   @endforeach
-                @else
-                <div class="col-6 col-lg-3">
-                  <div class="nav-column">
-                    <h6>Studio</h6>
-                    <nav class="footer-nav">
-                      <a href="#!">Our Story</a>
-                      <a href="#!">Design Process</a>
-                      <a href="#!">Portfolio</a>
-                      <a href="#!">Case Studies</a>
-                      <a href="#!">Awards</a>
-                    </nav>
-                  </div>
-                </div>
                 <!-- ... other default columns ... -->
                 @endif
 
@@ -209,7 +211,7 @@
 
             <div class="col-lg-6">
               <div class="copyright">
-                <p>{{ optional($settings)->copyright_text ?? '© Clinic. All rights reserved.' }}</p>
+                <p>{{ optional($settings)->copyright_text ?? '© RS ASA BUNDA. All rights reserved.' }}</p>
               </div>
             </div>
 
@@ -237,6 +239,49 @@
 
   <!-- Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
+
+  <!-- Doctors Carousel Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Doctors Carousel Swiper
+      const doctorsSwiper = new Swiper('#doctorsSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 1000, 
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '#doctorsSwiper .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '#doctorsSwiper .swiper-button-next',
+          prevEl: '#doctorsSwiper .swiper-button-prev',
+        }
+      });
+
+      // Initialize Departments Carousel Swiper
+      const departmentsSwiper = new Swiper('#departmentsSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 1000,
+        autoplay: {
+          delay: 8000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '#departmentsSwiper .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '#departmentsSwiper .swiper-button-next',
+          prevEl: '#departmentsSwiper .swiper-button-prev',
+        }
+      });
+    });
+  </script>
 
 </body>
 

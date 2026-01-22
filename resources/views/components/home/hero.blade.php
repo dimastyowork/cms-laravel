@@ -30,7 +30,7 @@
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
               </p>
 
-              <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">
+              <!-- <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">
                 <div class="stat-item">
                   <h3><span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2"
                       class="purecounter"></span>+</h3>
@@ -54,7 +54,7 @@
                   <i class="bi bi-play-circle me-2"></i>
                   Watch Our Story
                 </a>
-              </div>
+              </div> -->
 
               <div class="emergency-contact" data-aos="fade-right" data-aos-delay="700">
                 <div class="emergency-icon">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="emergency-info">
                   <small>Emergency Hotline</small>
-                  <strong>+1 (555) 911-2468</strong>
+                  <strong>-</strong>
                 </div>
               </div>
             </div>

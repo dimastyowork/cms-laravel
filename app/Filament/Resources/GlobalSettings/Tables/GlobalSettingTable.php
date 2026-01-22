@@ -13,6 +13,7 @@ class GlobalSettingTable
         return $table
             ->columns([
                 ImageColumn::make('logo')
+                    ->disk('public')
                     ->label('Logo'),
                 TextColumn::make('email')
                     ->label('Email')

@@ -17,9 +17,11 @@ class GlobalSetting extends Model
         'facebook',
         'twitter',
         'instagram',
-        'footer_url',
-        'footer_link_text',
-        'footer_link_url',
-        'url',
+        'footer_columns',
+        'copyright_text',
+    ];
+
+    protected $casts = [
+        'footer_columns' => 'array',
     ];
 }

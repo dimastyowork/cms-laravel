@@ -15,6 +15,10 @@ class Doctor extends Model
         'specialization',
         'bio',
         'photo',
+        'status',
+        'experience_years',
+        'rating',
+        'reviews_count',
     ];
 
     public function schedules(): HasMany

@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Units\Schemas;
 
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Schema\Schema;
+use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 
 class UnitForm
@@ -24,6 +24,10 @@ class UnitForm
                     ->unique(ignoreRecord: true),
                 Textarea::make('description')
                     ->columnSpanFull(),
+                \Filament\Forms\Components\FileUpload::make('image')
+                    ->disk('public')
+                    ->image()
+                    ->directory('units'),
             ]);
     }
 }

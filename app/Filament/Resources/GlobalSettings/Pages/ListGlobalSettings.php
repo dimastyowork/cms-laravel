@@ -10,10 +10,16 @@ class ListGlobalSettings extends ListRecords
 {
     protected static string $resource = GlobalSettingResource::class;
 
-    protected function getHeaderActions(): array
+    public function mount(): void
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        $setting = \App\Models\GlobalSetting::first();
+
+        if (! $setting) {
+            $setting = \App\Models\GlobalSetting::create([
+                'logo' => null,
+            ]);
+        }
+
+        redirect(GlobalSettingResource::getUrl('edit', ['record' => $setting]));
     }
 }

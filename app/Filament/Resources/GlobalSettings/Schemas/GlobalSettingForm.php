@@ -15,12 +15,10 @@ class GlobalSettingForm
             ->components([
                 FileUpload::make('logo')
                     ->label('Logo')
+                    ->disk('public')
                     ->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'])
                     ->directory('logos')
-                    ->nullable(),
-                TextInput::make('url')
-                    ->label('Website URL')
-                    ->url()
                     ->nullable(),
                 TextInput::make('email')
                     ->label('Email')
@@ -49,17 +47,21 @@ class GlobalSettingForm
                     ->label('Instagram URL')
                     ->url()
                     ->nullable(),
-                TextInput::make('footer_url')
-                    ->label('Footer URL')
-                    ->url()
-                    ->nullable(),
-                TextInput::make('footer_link_text')
-                    ->label('Footer Link Text')
-                    ->nullable(),
-                TextInput::make('footer_link_url')
-                    ->label('Footer Link URL')
-                    ->url()
-                    ->nullable(),
+                \Filament\Forms\Components\Repeater::make('footer_columns')
+                    ->label('Footer Columns')
+                    ->schema([
+                        TextInput::make('title')->required(),
+                        \Filament\Forms\Components\Repeater::make('links')
+                            ->schema([
+                                TextInput::make('label')->required(),
+                                TextInput::make('url')->required(),
+                            ])
+                    ])
+                    ->columnSpanFull(),
+                TextInput::make('copyright_text')
+                    ->label('Copyright Text')
+                    ->nullable()
+                    ->columnSpanFull(),
             ]);
     }
 }

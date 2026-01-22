@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Units\Schemas;
 
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
 class UnitInfolist
@@ -10,7 +12,13 @@ class UnitInfolist
     {
         return $schema
             ->components([
-                //
+                ImageEntry::make('image')
+                    ->disk('public')
+                    ->size(200),
+                TextEntry::make('name'),
+                TextEntry::make('slug'),
+                TextEntry::make('description')
+                    ->columnSpanFull(),
             ]);
     }
 }

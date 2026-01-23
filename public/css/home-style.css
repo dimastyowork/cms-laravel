@@ -262,7 +262,7 @@ body {
    FOOTER STYLES
    ======================================== */
 .footer {
-    background-color: var(--dark-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     padding: 3rem 2rem 1rem;
 }

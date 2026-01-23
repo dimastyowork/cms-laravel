@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Doctor;
 use App\Models\GlobalSetting;
 use App\Models\Service;
@@ -13,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $settings = GlobalSetting::first();
+        $about = About::where('is_active', true)->first();
         
         $doctors = Doctor::query()
             ->latest()
@@ -37,6 +39,6 @@ class HomeController extends Controller
         // Or send all services and filter in view, but let's just send 'services' generally if UI allows
         $services = Service::all();
 
-        return view('pages.home', compact('settings', 'doctors', 'departments', 'services'));
+        return view('pages.home', compact('settings', 'about', 'doctors', 'departments', 'services'));
     }
 }

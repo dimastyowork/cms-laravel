@@ -22,12 +22,15 @@
               </div>
 
               <h1 data-aos="fade-right" data-aos-delay="300">
-                Excellence in <span class="highlight">Healthcare</span> With Compassionate Care
+                @if($about)
+                  {!! str_replace($about->title, '<span class="highlight">' . explode(' ', $about->title)[0] . '</span> ' . implode(' ', array_slice(explode(' ', $about->title), 1)), $about->title) !!}
+                @else
+                  Excellence in <span class="highlight">Healthcare</span> With Compassionate Care
+                @endif
               </h1>
 
               <p class="hero-description" data-aos="fade-right" data-aos-delay="400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                {{ $about ? $about->description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.' }}
               </p>
 
               <!-- <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">
@@ -62,7 +65,7 @@
                 </div>
                 <div class="emergency-info">
                   <small>Emergency Hotline</small>
-                  <strong>-</strong>
+                  <strong>{{ optional($settings)->phone ?? '-' }}</strong>
                 </div>
               </div>
             </div>
@@ -71,7 +74,7 @@
           <div class="col-lg-6">
             <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
               <div class="main-image">
-                <img src="{{ asset('assets/img/health/staff-10.webp') }}" alt="Modern Healthcare Facility" class="img-fluid">
+                <img src="{{ $about && $about->photo ? asset('storage/' . $about->photo) : asset('assets/img/health/staff-10.webp') }}" alt="{{ $about ? $about->title : 'Modern Healthcare Facility' }}" class="img-fluid">
                 <div class="floating-card appointment-card">
                   <div class="card-icon">
                     <i class="bi bi-calendar-check"></i>

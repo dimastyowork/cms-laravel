@@ -2,10 +2,13 @@
 
 namespace App\Filament\Resources\GlobalSettings\Schemas;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Grid;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Schemas\Schema;
+use Filament\Forms\Components\Repeater;
 
 class GlobalSettingForm
 {
@@ -13,55 +16,72 @@ class GlobalSettingForm
     {
         return $schema
             ->components([
-                FileUpload::make('logo')
-                    ->label('Logo')
-                    ->disk('public')
-                    ->image()
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'])
-                    ->directory('logos')
-                    ->nullable(),
-                TextInput::make('email')
-                    ->label('Email')
-                    ->email()
-                    ->nullable(),
-                TextInput::make('phone')
-                    ->label('Phone')
-                    ->tel()
-                    ->nullable(),
-                TextInput::make('address')
-                    ->label('Address')
-                    ->nullable(),
-                Textarea::make('description')
-                    ->label('Description')
-                    ->rows(3)
-                    ->nullable(),
-                TextInput::make('facebook')
-                    ->label('Facebook URL')
-                    ->url()
-                    ->nullable(),
-                TextInput::make('twitter')
-                    ->label('Twitter URL')
-                    ->url()
-                    ->nullable(),
-                TextInput::make('instagram')
-                    ->label('Instagram URL')
-                    ->url()
-                    ->nullable(),
-                \Filament\Forms\Components\Repeater::make('footer_columns')
-                    ->label('Footer Columns')
+
+                Section::make('Branding')
                     ->schema([
-                        TextInput::make('title')->required(),
-                        \Filament\Forms\Components\Repeater::make('links')
+                        FileUpload::make('logo')
+                            ->label('Logo')
+                            ->disk('public')
+                            ->image()
+                            ->directory('logos')
+                            ->imagePreviewHeight('150')
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Kontak')
+                    ->schema([
+                        Grid::make(2)->schema([
+                            TextInput::make('email')
+                                ->email(),
+
+                            TextInput::make('phone')
+                                ->tel(),
+
+                            TextInput::make('address')
+                                ->columnSpanFull(),
+                        ]),
+                    ]),
+
+                Section::make('Deskripsi Website')
+                    ->schema([
+                        Textarea::make('description')
+                            ->rows(3)
+                            ->columnSpanFull(),
+                    ]),
+
+                Section::make('Sosial Media')
+                    ->schema([
+                        Grid::make(3)->schema([
+                            TextInput::make('facebook')->url(),
+                            TextInput::make('twitter')->url(),
+                            TextInput::make('instagram')->url(),
+                        ]),
+                    ]),
+
+                Section::make('Footer Website')
+                    ->columnSpanFull()
+                    ->schema([
+                        Repeater::make('footer_columns')
+                            ->label('Kolom Footer')
                             ->schema([
-                                TextInput::make('label')->required(),
-                                TextInput::make('url')->required(),
+                                TextInput::make('title')
+                                    ->label('Judul Kolom')
+                                    ->required(),
+
+                                Repeater::make('links')
+                                    ->schema([
+                                        TextInput::make('label')->required(),
+                                        TextInput::make('url')->required(),
+                                    ])
+                                    ->columns(2)
+                                    ->addActionLabel('Tambah Link'),
                             ])
-                    ])
-                    ->columnSpanFull(),
-                TextInput::make('copyright_text')
-                    ->label('Copyright Text')
-                    ->nullable()
-                    ->columnSpanFull(),
+                            ->columnSpanFull()
+                            ->addActionLabel('Tambah Kolom'),
+
+                        TextInput::make('copyright_text')
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 }

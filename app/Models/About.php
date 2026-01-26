@@ -13,6 +13,8 @@ class About extends Model
         'title',
         'photo',
         'description',
+        'vision',
+        'mission',
         'is_active',
     ];
 

@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Abouts\Schemas;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
 
@@ -23,6 +24,12 @@ class AboutForm
                     ->nullable(),
                 Textarea::make('description')
                     ->required()
+                    ->columnSpanFull(),
+                RichEditor::make('vision')
+                    ->label('Visi')
+                    ->columnSpanFull(),
+                RichEditor::make('mission')
+                    ->label('Misi')
                     ->columnSpanFull(),
                 Toggle::make('is_active')
                     ->required(),

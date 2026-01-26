@@ -113,7 +113,7 @@
         </div>
 
         <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
-          <a href="#!" class="btn-view-all">
+          <a href="{{ route('doctor.index') }}" class="btn-view-all">
             Lihat Semua Dokter
             <i class="bi bi-arrow-right"></i>
           </a>

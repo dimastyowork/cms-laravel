@@ -39,6 +39,7 @@ class DoctorForm
                 Textarea::make('bio')
                     ->columnSpanFull(),
                 FileUpload::make('photo')
+                    ->columnSpanFull()
                     ->disk('public')
                     ->image()
                     ->directory('doctors'),

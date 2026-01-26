@@ -23,10 +23,11 @@ class ScheduleForm
                     ->required()
                     ->searchable()
                     ->preload(),
-                \Filament\Forms\Components\Hidden::make('days'), // Will be populated by observer/hook
+                \Filament\Forms\Components\Hidden::make('days'),
                 
                 \Filament\Forms\Components\Repeater::make('time_slots')
                     ->label('Jadwal Praktik')
+                    ->columnSpanFull()
                     ->schema([
                         Select::make('day')
                             ->label('Hari')
@@ -64,6 +65,7 @@ class ScheduleForm
                     ->reorderableWithButtons(),
                     
                 TextInput::make('note')
+                    ->columnSpanFull()
                     ->label('Catatan')
                     ->maxLength(255),
             ]);

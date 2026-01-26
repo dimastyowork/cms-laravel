@@ -25,6 +25,7 @@ class UnitForm
                 Textarea::make('description')
                     ->columnSpanFull(),
                 \Filament\Forms\Components\FileUpload::make('image')
+                    ->columnSpanFull()
                     ->disk('public')
                     ->image()
                     ->directory('units'),

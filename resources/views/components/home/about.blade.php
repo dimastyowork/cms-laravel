@@ -1,4 +1,4 @@
-
+@props(['about'])
     <section id="home-about" class="home-about section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -6,16 +6,35 @@
         <div class="row align-items-center">
           <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
             <div class="about-content">
-              <h2 class="section-heading">Visi Misi</h2>
-              <p class="lead-text">For over two decades, we've been dedicated to providing exceptional healthcare that
-                combines cutting-edge medical technology with the personal touch our patients deserve.</p>
+              <!-- <h2 class="section-heading">{{ $about->title ?? 'Visi Misi' }}</h2> -->
+              
+              @if($about && $about->vision)
+                <div class="vision-section mb-4">
+                  <h4 class="fw-bold text-primary">Visi</h4>
+                  <div class="vision-text">
+                    {!! $about->vision !!}
+                  </div>
+                </div>
+              @else
+                <p class="lead-text">For over two decades, we've been dedicated to providing exceptional healthcare that
+                  combines cutting-edge medical technology with the personal touch our patients deserve.</p>
+              @endif
 
-              <p>Our multidisciplinary team of specialists works collaboratively to ensure every patient receives
-                comprehensive care tailored to their unique needs. From preventive services to complex procedures, we
-                maintain the highest standards of medical excellence while fostering an environment of trust and
-                healing.</p>
+              @if($about && $about->mission)
+                <div class="mission-section mb-4">
+                  <h4 class="fw-bold text-primary">Misi</h4>
+                  <div class="mission-text">
+                    {!! $about->mission !!}
+                  </div>
+                </div>
+              @else
+                <p>Our multidisciplinary team of specialists works collaboratively to ensure every patient receives
+                  comprehensive care tailored to their unique needs. From preventive services to complex procedures, we
+                  maintain the highest standards of medical excellence while fostering an environment of trust and
+                  healing.</p>
+              @endif
 
-              <div class="stats-grid">
+              <!-- <div class="stats-grid">
                 <div class="stat-item">
                   <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="15000"
                     data-purecounter-duration="1"></div>
@@ -31,10 +50,10 @@
                     data-purecounter-duration="1"></div>
                   <div class="stat-label">Medical Specialists</div>
                 </div>
-              </div>
+              </div> -->
 
               <div class="cta-section">
-                <a href="about.html" class="btn-primary">Learn More About Us</a>
+                <!-- <a href="about.html" class="btn-primary">Learn More About Us</a> -->
               </div>
             </div>
           </div>
@@ -42,7 +61,7 @@
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="about-visual">
               <div class="main-image">
-                <img src="{{ asset('assets/img/health/facilities-9.webp') }}" alt="Modern medical facility" class="img-fluid">
+                <img src="{{ $about && $about->photo ? asset('storage/' . $about->photo) : asset('assets/img/health/facilities-9.webp') }}" alt="{{ $about->title ?? 'Modern medical facility' }}" class="img-fluid">
               </div>
               <div class="floating-card">
                 <div class="card-content">
@@ -55,12 +74,12 @@
                   </div>
                 </div>
               </div>
-              <div class="experience-badge">
+              <!-- <div class="experience-badge">
                 <div class="badge-content">
                   <span class="years">25+</span>
                   <span class="text">Years of Trusted Care</span>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

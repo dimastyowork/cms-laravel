@@ -11,8 +11,8 @@ class PolyclinicController extends Controller
     public function index()
     {
         $settings = GlobalSetting::first();
-        $departments = Unit::latest()->paginate(12);
+        $polikliniks = Unit::latest()->paginate(12);
 
-        return view('pages.polyclinic.index', compact('settings', 'departments'));
+        return view('pages.polyclinic.index', compact('settings', 'polikliniks'));
     }
 }

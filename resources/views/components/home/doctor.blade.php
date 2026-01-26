@@ -1,4 +1,4 @@
-
+@props(['doctors'])
     <section id="find-a-doctor" class="find-a-doctor section">
 
       <div class="container section-title" data-aos="fade-up">

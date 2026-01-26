@@ -10,6 +10,8 @@ class ViewUnit extends ViewRecord
 {
     protected static string $resource = UnitResource::class;
 
+    protected static ?string $title = 'Poliklinik';
+
     protected function getHeaderActions(): array
     {
         return [

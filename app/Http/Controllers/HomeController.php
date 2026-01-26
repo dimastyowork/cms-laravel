@@ -21,7 +21,7 @@ class HomeController extends Controller
             ->take(12)
             ->get();
 
-        $departments = Unit::query()
+        $polikliniks = Unit::query()
             ->latest()
             ->take(10) // Or however many you want to show
             ->get();
@@ -39,6 +39,6 @@ class HomeController extends Controller
         // Or send all services and filter in view, but let's just send 'services' generally if UI allows
         $services = Service::all();
 
-        return view('pages.home', compact('settings', 'about', 'doctors', 'departments', 'services'));
+        return view('pages.home', compact('settings', 'about', 'doctors', 'polikliniks', 'services'));
     }
 }

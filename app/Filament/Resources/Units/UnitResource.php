@@ -25,6 +25,8 @@ class UnitResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?string $navigationLabel = 'Poliklinik';
+    protected static ?string $pluralModelLabel = 'Poliklinik';
     public static function form(Schema $schema): Schema
     {
         return UnitForm::configure($schema);

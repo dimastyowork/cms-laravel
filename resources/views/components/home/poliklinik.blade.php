@@ -1,3 +1,4 @@
+@props(['polikliniks'])
     <section id="featured-departments" class="featured-departments section">
 
       <div class="container section-title" data-aos="fade-up">
@@ -10,9 +11,9 @@
         <div class="departments-carousel swiper" id="departmentsSwiper" data-aos="fade-up" data-aos-delay="200">
           <div class="swiper-wrapper">
             @php
-              $departmentChunks = $departments->chunk(2);
+              $polikliniksChunks = $polikliniks->chunk(2);
             @endphp
-            @forelse($departmentChunks as $chunk)
+            @forelse($polikliniksChunks as $chunk)
             <div class="swiper-slide">
               <div class="slide-grid">
                 @foreach($chunk as $department)

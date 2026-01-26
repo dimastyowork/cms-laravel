@@ -63,7 +63,7 @@
               <div class="main-image">
                 <img src="{{ $about && $about->photo ? asset('storage/' . $about->photo) : asset('assets/img/health/facilities-9.webp') }}" alt="{{ $about->title ?? 'Modern medical facility' }}" class="img-fluid">
               </div>
-              <div class="floating-card">
+              <!-- <div class="floating-card">
                 <div class="card-content">
                   <div class="icon">
                     <i class="bi bi-heart-pulse"></i>
@@ -73,7 +73,7 @@
                     <p>Always here when you need us most</p>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- <div class="experience-badge">
                 <div class="badge-content">
                   <span class="years">25+</span>

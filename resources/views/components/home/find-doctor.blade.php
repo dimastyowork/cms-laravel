@@ -1,11 +1,10 @@
-<!-- Find A Doctor Section -->
+
     <section id="find-a-doctor" class="find-a-doctor section">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Cari Dokter</h2>
         <p>Temukan dokter berpengalaman dan profesional sesuai kebutuhan kesehatan Anda</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -55,11 +54,7 @@
                 <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="{{ ($loop->index % 6) * 100 + 100 }}">
                   <div class="profile-header">
                     <div class="doctor-avatar">
-                      @if($doctor->photo)
-                        <img src="{{ asset('storage/' . $doctor->photo) }}" alt="{{ $doctor->name }}" class="img-fluid">
-                      @else
-                        <img src="{{ asset('assets/img/health/staff-' . (($loop->index % 6) + 1) * 2 . '.webp') }}" alt="{{ $doctor->name }}" class="img-fluid">
-                      @endif
+                      <img src="{{ $doctor->photo_url }}" alt="{{ $doctor->name }}" class="img-fluid">
                       <div class="status-indicator {{ $doctor->status ?? 'offline' }}"></div>
                     </div>
                     <div class="doctor-details">
@@ -95,7 +90,7 @@
                     <a href="#!" class="btn-secondary">Lihat Detail</a>
                     <a href="#!" class="btn-primary">Pesan Jadwal</a>
                   </div>
-                </div><!-- End Doctor Profile -->
+                </div>
                 @endforeach
               </div>
             </div>
@@ -112,7 +107,6 @@
             @endforelse
           </div>
 
-          <!-- Swiper Navigation (optional) -->
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
@@ -127,4 +121,4 @@
 
       </div>
 
-    </section><!-- /Find A Doctor Section -->
+    </section>

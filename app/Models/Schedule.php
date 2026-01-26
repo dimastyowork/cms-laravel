@@ -13,10 +13,14 @@ class Schedule extends Model
     protected $fillable = [
         'doctor_id',
         'unit_id',
-        'day',
-        'start_time',
-        'end_time',
+        'days',
+        'time_slots',
         'note',
+    ];
+
+    protected $casts = [
+        'days' => 'array',
+        'time_slots' => 'array',
     ];
 
     public function doctor(): BelongsTo

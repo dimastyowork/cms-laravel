@@ -1,11 +1,9 @@
-    <!-- Featured Departments Section -->
     <section id="featured-departments" class="featured-departments section">
 
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Poliklinik</h2>
         <p>Melayani pemeriksaan dan konsultasi kesehatan dengan dokter berpengalaman dan fasilitas lengkap.</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -32,7 +30,7 @@
                     </a>
                   </div>
                   <div class="specialty-visual">
-                    <img src="{{ $department->image ? asset('storage/' . $department->image) : asset('assets/img/health/cardiology-1.webp') }}" alt="{{ $department->name }}" class="img-fluid">
+                    <img src="{{ $department->image_url }}" alt="{{ $department->name }}" class="img-fluid">
                     <div class="visual-overlay">
                       <i class="bi bi-heart-pulse"></i>
                     </div>
@@ -54,7 +52,6 @@
             @endforelse
           </div>
           
-          <!-- Swiper Navigation -->
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
@@ -80,4 +77,4 @@
 
       </div>
 
-    </section><!-- /Featured Departments Section -->
+    </section>

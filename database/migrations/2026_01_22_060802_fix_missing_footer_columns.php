@@ -6,24 +6,33 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('global_settings', function (Blueprint $table) {
-            $table->json('footer_columns')->nullable()->after('instagram');
-            $table->string('copyright_text')->nullable()->after('footer_columns');
+
+            if (!Schema::hasColumn('global_settings', 'footer_columns')) {
+                $table->json('footer_columns')->nullable()->after('instagram');
+            }
+
+            if (!Schema::hasColumn('global_settings', 'copyright_text')) {
+                $table->string('copyright_text')->nullable()->after('footer_columns');
+            }
+
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('global_settings', function (Blueprint $table) {
-            $table->dropColumn(['footer_columns', 'copyright_text']);
+
+            if (Schema::hasColumn('global_settings', 'footer_columns')) {
+                $table->dropColumn('footer_columns');
+            }
+
+            if (Schema::hasColumn('global_settings', 'copyright_text')) {
+                $table->dropColumn('copyright_text');
+            }
+
         });
     }
 };

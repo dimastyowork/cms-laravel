@@ -21,6 +21,29 @@ class Doctor extends Model
         'reviews_count',
     ];
 
+    /**
+     * Get the doctor's photo with default profile image fallback
+     */
+    protected function casts(): array
+    {
+        return [
+            'photo' => 'string',
+        ];
+    }
+
+    /**
+     * Get the photo URL with default fallback
+     */
+    public function getPhotoUrlAttribute(): string
+    {
+        // Jika ada foto di database, gunakan itu
+        if (!empty($this->photo)) {
+            return asset('storage/' . $this->photo);
+        }
+        // Jika tidak ada, gunakan default image
+        return asset('assets/img/person/default-profile.jpg');
+    }
+
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class);

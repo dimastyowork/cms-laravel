@@ -1,4 +1,4 @@
-    <!-- Home About Section -->
+
     <section id="home-about" class="home-about section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -67,4 +67,4 @@
 
       </div>
 
-    </section><!-- /Home About Section -->
+    </section>

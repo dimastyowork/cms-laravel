@@ -23,22 +23,48 @@ class ScheduleForm
                     ->required()
                     ->searchable()
                     ->preload(),
-                Select::make('day')
-                    ->options([
-                        'Monday' => 'Monday',
-                        'Tuesday' => 'Tuesday',
-                        'Wednesday' => 'Wednesday',
-                        'Thursday' => 'Thursday',
-                        'Friday' => 'Friday',
-                        'Saturday' => 'Saturday',
-                        'Sunday' => 'Sunday',
+                \Filament\Forms\Components\Hidden::make('days'), // Will be populated by observer/hook
+                
+                \Filament\Forms\Components\Repeater::make('time_slots')
+                    ->label('Jadwal Praktik')
+                    ->schema([
+                        Select::make('day')
+                            ->label('Hari')
+                            ->options([
+                                'Monday' => 'Senin',
+                                'Tuesday' => 'Selasa',
+                                'Wednesday' => 'Rabu',
+                                'Thursday' => 'Kamis',
+                                'Friday' => 'Jumat',
+                                'Saturday' => 'Sabtu',
+                                'Sunday' => 'Minggu',
+                            ])
+                            ->required()
+                            ->columnSpan(1),
+                            
+                        \Filament\Forms\Components\Repeater::make('slots')
+                            ->label('Jam')
+                            ->schema([
+                                TimePicker::make('start')
+                                    ->label('Buka')
+                                    ->required()
+                                    ->seconds(false),
+                                TimePicker::make('end')
+                                    ->label('Tutup')
+                                    ->required()
+                                    ->seconds(false),
+                            ])
+                            ->columns(2)
+                            ->columnSpan(1)
+                            ->addActionLabel('Tambah Jam')
                     ])
-                    ->required(),
-                TimePicker::make('start_time')
-                    ->required(),
-                TimePicker::make('end_time')
-                    ->required(),
+                    ->columns(2)
+                    ->defaultItems(1)
+                    ->addActionLabel('Tambah Hari Lain')
+                    ->reorderableWithButtons(),
+                    
                 TextInput::make('note')
+                    ->label('Catatan')
                     ->maxLength(255),
             ]);
     }

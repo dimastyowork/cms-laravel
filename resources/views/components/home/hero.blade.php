@@ -1,4 +1,4 @@
-    <!-- Hero Section -->
+
     <section id="hero" class="hero section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -15,10 +15,10 @@
                   <i class="bi bi-clock"></i>
                   <span>24/7 Emergency</span>
                 </div>
-                <div class="badge-item">
+                <!-- <div class="badge-item">
                   <i class="bi bi-star-fill"></i>
                   <span>4.9/5 Rating</span>
-                </div>
+                </div> -->
               </div>
 
               <h1 data-aos="fade-right" data-aos-delay="300">
@@ -80,12 +80,12 @@
                     <i class="bi bi-calendar-check"></i>
                   </div>
                   <div class="card-content">
-                    <h6>Next Available</h6>
-                    <p>Today 2:30 PM</p>
-                    <small>Dr. Sarah Johnson</small>
+                    <h6>Coming soon</h6>
+                    <!-- <p>Today 2:30 PM</p> -->
+                    <small>RS Asa Bunda</small>
                   </div>
                 </div>
-                <div class="floating-card rating-card">
+                <!-- <div class="floating-card rating-card">
                   <div class="card-content">
                     <div class="rating-stars">
                       <i class="bi bi-star-fill"></i>
@@ -97,7 +97,7 @@
                     <h6>4.9/5</h6>
                     <small>1,234 Reviews</small>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="background-elements">
                 <div class="element element-1"></div>
@@ -110,4 +110,4 @@
 
       </div>
 
-    </section><!-- /Hero Section -->
+    </section>

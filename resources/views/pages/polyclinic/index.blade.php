@@ -1,5 +1,5 @@
 <x-layouts.app :settings="$settings">
-  <section id="featured-departments" class="featured-departments section">
+  <section id="featured-departments" class="featured-departments section" style="padding-top: 150px;">
     <div class="container section-title" data-aos="fade-up">
       <h2>Daftar Poliklinik</h2>
       <p>Melayani pemeriksaan dan konsultasi kesehatan dengan dokter berpengalaman dan fasilitas lengkap.</p>
@@ -7,23 +7,23 @@
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
       <div class="row gy-4">
-        @forelse($departments as $department)
+        @forelse($polikliniks as $poliklinik)
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 2) * 100 + 100 }}">
             <div class="specialty-card h-100 shadow-sm">
               <div class="specialty-content">
                 <div class="specialty-meta">
                   <span class="specialty-label">Specialized Care</span>
                 </div>
-                <h3>{{ $department->name }}</h3>
-                <p>{{ Str::limit($department->description, 150) }}</p>
+                <h3>{{ $poliklinik->name }}</h3>
+                <p>{{ Str::limit($poliklinik->description, 150) }}</p>
                 <div class="specialty-features">
                 </div>
                 <a href="#!" class="specialty-link">
-                  Explore {{ $department->name }} <i class="bi bi-arrow-right"></i>
+                  Explore {{ $poliklinik->name }} <i class="bi bi-arrow-right"></i>
                 </a>
               </div>
               <div class="specialty-visual">
-                <img src="{{ $department->image_url }}" alt="{{ $department->name }}" class="img-fluid">
+                <img src="{{ $poliklinik->image_url }}" alt="{{ $poliklinik->name }}" class="img-fluid">
                 <div class="visual-overlay">
                   <i class="bi bi-heart-pulse"></i>
                 </div>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="mt-5 d-flex justify-content-center">
-        {{ $departments->links() }}
+        {{ $polikliniks->links() }}
       </div>
     </div>
   </section>

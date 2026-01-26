@@ -45,8 +45,8 @@
               <div class="col-12">
                 <x-empty-state 
                   icon="bi bi-hospital" 
-                  title="Poliklinik belum tersedia" 
-                  subtitle="Informasi poliklinik akan ditampilkan segera"
+                  title="Layanan Poliklinik Belum Tersedia" 
+                  subtitle="Kami sedang menyiapkan informasi layanan terbaik untuk Anda. Terima kasih atas kesabaran Anda."
                 />
               </div>
             </div>

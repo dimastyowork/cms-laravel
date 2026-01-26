@@ -15,9 +15,9 @@
                     {!! $about->vision !!}
                   </div>
                 </div>
-              @else
-                <p class="lead-text">For over two decades, we've been dedicated to providing exceptional healthcare that
-                  combines cutting-edge medical technology with the personal touch our patients deserve.</p>
+              @elseif(!($about))
+                 <!-- Empty state handles by the else block below covering the whole section content if needed, 
+                      but here we are inside the structure. Let's make it clean. -->
               @endif
 
               @if($about && $about->mission)
@@ -27,11 +27,12 @@
                     {!! $about->mission !!}
                   </div>
                 </div>
-              @else
-                <p>Our multidisciplinary team of specialists works collaboratively to ensure every patient receives
-                  comprehensive care tailored to their unique needs. From preventive services to complex procedures, we
-                  maintain the highest standards of medical excellence while fostering an environment of trust and
-                  healing.</p>
+              @elseif(!($about))
+                <x-empty-state 
+                  icon="bi bi-info-circle" 
+                  title="Informasi Tentang Kami Belum Tersedia" 
+                  subtitle="Profil lengkap rumah sakit sedang kami susun untuk Anda."
+                />
               @endif
 
               <!-- <div class="stats-grid">

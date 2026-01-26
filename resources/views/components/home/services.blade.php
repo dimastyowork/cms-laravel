@@ -32,8 +32,8 @@
               <div class="service-details empty-featured-service">
                 <x-empty-state 
                   icon="bi bi-briefcase-medical" 
-                  title="Layanan unggulan belum tersedia" 
-                  subtitle="Informasi layanan akan segera ditampilkan di sini"
+                  title="Layanan Unggulan Sedang Disiapkan" 
+                  subtitle="Kami sedang menyusun informasi layanan terbaik untuk Anda."
                 />
               </div>
               @endif
@@ -57,8 +57,8 @@
               <div class="services-empty">
                 <x-empty-state 
                   icon="bi bi-list-check" 
-                  title="Layanan lainnya belum tersedia" 
-                  subtitle="Terus pantau untuk update terbaru"
+                  title="Layanan Lainnya Segera Hadir" 
+                  subtitle="Daftar layanan sedang diperbarui"
                 />
               </div>
               @endforelse
@@ -85,8 +85,8 @@
             <div class="col-12">
               <x-empty-state 
                 icon="bi bi-grid-3x3-gap" 
-                title="Layanan tambahan belum tersedia" 
-                subtitle="Daftar lengkap layanan kami akan ditampilkan segera"
+                title="Layanan Tambahan Dalam Proses" 
+                subtitle="Kami akan segera menambahkan lebih banyak layanan."
               />
             </div>
             @endforelse

@@ -23,7 +23,7 @@ class HomeController extends Controller
 
         $polikliniks = Unit::query()
             ->latest()
-            ->take(10) // Or however many you want to show
+            ->take(10)
             ->get();
 
         $featuredServices = Service::query()
@@ -32,11 +32,10 @@ class HomeController extends Controller
             ->get();
             
         $otherServices = Service::query()
-            ->where('is_featured', false) // Or just take others
+            ->where('is_featured', false)
             ->take(3)
             ->get();
             
-        // Or send all services and filter in view, but let's just send 'services' generally if UI allows
         $services = Service::all();
 
         return view('pages.home', compact('settings', 'about', 'doctors', 'polikliniks', 'services'));

@@ -1,5 +1,5 @@
 <x-layouts.app :settings="$settings">
-  <section id="find-a-doctor" class="find-a-doctor section">
+  <section id="find-a-doctor" class="find-a-doctor section" style="padding-top: 150px;">
     <div class="container section-title" data-aos="fade-up">
       <h2>Daftar Dokter</h2>
       <p>Temukan dokter berpengalaman dan profesional sesuai kebutuhan kesehatan Anda</p>

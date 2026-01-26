@@ -99,8 +99,8 @@
               <div class="col-12">
                 <x-empty-state 
                   icon="bi bi-person-heart" 
-                  title="Dokter belum tersedia" 
-                  subtitle="Daftar dokter kami akan segera ditampilkan"
+                  title="Belum Ada Data Dokter" 
+                  subtitle="Mohon maaf, saat ini kami sedang memperbarui daftar dokter kami. Silakan kembali lagi nanti."
                 />
               </div>
             </div>

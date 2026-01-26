@@ -25,12 +25,12 @@
                 @if($about)
                   {!! str_replace($about->title, '<span class="highlight">' . explode(' ', $about->title)[0] . '</span> ' . implode(' ', array_slice(explode(' ', $about->title), 1)), $about->title) !!}
                 @else
-                  Excellence in <span class="highlight">Healthcare</span> With Compassionate Care
+                  Selamat Datang di <span class="highlight">RS Bunda</span>
                 @endif
               </h1>
 
               <p class="hero-description" data-aos="fade-right" data-aos-delay="400">
-                {{ $about ? $about->description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.' }}
+                {{ $about ? $about->description : 'Kami berkomitmen untuk memberikan layanan kesehatan terbaik dengan sentuhan personal. Website kami sedang dalam pembaruan untuk memberikan informasi yang lebih lengkap.' }}
               </p>
 
               <!-- <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">

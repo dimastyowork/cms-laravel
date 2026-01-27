@@ -19,9 +19,9 @@
                 @foreach($chunk as $department)
                 <div class="specialty-card" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 100 }}">
                   <div class="specialty-content">
-                    <div class="specialty-meta">
+                    <!-- <div class="specialty-meta">
                       <span class="specialty-label">Specialized Care</span>
-                    </div>
+                    </div> -->
                     <h3>{{ $department->name }}</h3>
                     <p>{{ Str::limit($department->description, 100) }}</p>
                     <div class="specialty-features">

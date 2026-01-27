@@ -46,11 +46,11 @@
               <div class="profile-header">
                 <div class="doctor-avatar">
                   <img src="{{ $doctor->photo_url }}" alt="{{ $doctor->name }}" class="img-fluid">
-                  <div class="status-indicator {{ $doctor->status ?? 'offline' }}"></div>
+
                 </div>
                 <div class="doctor-details">
-                  <h4>{{ $doctor->name }}</h4>
-                  <span class="specialty-tag">{{ $doctor->specialization ?? 'Spesialis' }}</span>
+                  <h4 class="text-break">{{ $doctor->name }}</h4>
+                  <span class="specialty-tag text-break">{{ $doctor->specialization ?? 'Spesialis' }}</span>
                   <div class="experience-info">
                     <i class="bi bi-award"></i>
                     <span>{{ $doctor->experience_years ?? 0 }} tahun pengalaman</span>
@@ -78,7 +78,7 @@
                 <span class="review-count">({{ $doctor->reviews_count ?? 0 }} reviews)</span>
               </div>
               <div class="action-buttons mt-auto">
-                <a href="#!" class="btn-secondary">Lihat Detail</a>
+                <a href="{{ route('doctor.show', $doctor) }}" class="btn-secondary">Lihat Detail</a>
                 <a href="#!" class="btn-primary">Pesan Jadwal</a>
               </div>
             </div>

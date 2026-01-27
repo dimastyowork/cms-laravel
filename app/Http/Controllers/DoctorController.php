@@ -26,4 +26,14 @@ class DoctorController extends Controller
 
         return view('pages.doctor.index', compact('settings', 'doctors'));
     }
+
+    public function show(Doctor $doctor)
+    {
+        $settings = GlobalSetting::first();
+        
+        // Load doctor's schedules and related units (polyclinics)
+        $doctor->load(['schedules.unit']);
+
+        return view('pages.doctor.show', compact('settings', 'doctor'));
+    }
 }

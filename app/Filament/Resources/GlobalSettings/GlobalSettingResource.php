@@ -9,6 +9,7 @@ use App\Filament\Resources\GlobalSettings\Schemas\GlobalSettingForm;
 use App\Filament\Resources\GlobalSettings\Tables\GlobalSettingTable;
 use App\Models\GlobalSetting;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -20,13 +21,15 @@ class GlobalSettingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
 
-    protected static ?string $navigationLabel = 'Global Settings';
+    protected static UnitEnum|string|null $navigationGroup = 'Pengaturan';
+    
+    protected static ?string $navigationLabel = 'Pengaturan Global';
 
     protected static ?string $modelLabel = 'Global Setting';
 
     protected static ?string $pluralModelLabel = 'Global Settings';
 
-    protected static ?int $navigationSort = 100;
+    protected static ?int $navigationSort = 1;
 
     public static function table(Table $table): Table
     {

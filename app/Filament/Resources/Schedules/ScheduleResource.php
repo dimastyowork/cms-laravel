@@ -11,6 +11,7 @@ use App\Filament\Resources\Schedules\Schemas\ScheduleInfolist;
 use App\Filament\Resources\Schedules\Tables\SchedulesTable;
 use App\Models\Schedule;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -22,6 +23,12 @@ class ScheduleResource extends Resource
     protected static ?string $model = Schedule::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCalendar;
+
+    protected static UnitEnum|string|null $navigationGroup = 'Manajemen Medis';
+    
+    protected static ?string $navigationLabel = 'Jadwal Praktik';
+    
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $recordTitleAttribute = 'note';
 

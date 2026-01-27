@@ -11,6 +11,7 @@ use App\Filament\Resources\Doctors\Schemas\DoctorInfolist;
 use App\Filament\Resources\Doctors\Tables\DoctorsTable;
 use App\Models\Doctor;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -22,6 +23,12 @@ class DoctorResource extends Resource
     protected static ?string $model = Doctor::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
+
+    protected static UnitEnum|string|null $navigationGroup = 'Manajemen Medis';
+    
+    protected static ?string $navigationLabel = 'Dokter';
+    
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $recordTitleAttribute = 'name';
 

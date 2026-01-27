@@ -11,6 +11,7 @@ use App\Filament\Resources\Abouts\Schemas\AboutInfolist;
 use App\Filament\Resources\Abouts\Tables\AboutsTable;
 use App\Models\About;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,6 +22,12 @@ class AboutResource extends Resource
     protected static ?string $model = About::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static UnitEnum|string|null $navigationGroup = 'Konten Website';
+    
+    protected static ?string $navigationLabel = 'Tentang Kami';
+    
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $recordTitleAttribute = 'title';
 

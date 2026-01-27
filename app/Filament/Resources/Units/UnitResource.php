@@ -11,6 +11,7 @@ use App\Filament\Resources\Units\Schemas\UnitInfolist;
 use App\Filament\Resources\Units\Tables\UnitsTable;
 use App\Models\Unit;
 use BackedEnum;
+use UnitEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -25,7 +26,12 @@ class UnitResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static UnitEnum|string|null $navigationGroup = 'Manajemen Medis';
+    
     protected static ?string $navigationLabel = 'Poliklinik';
+    
+    protected static ?int $navigationSort = 3;
+    
     protected static ?string $pluralModelLabel = 'Poliklinik';
     public static function form(Schema $schema): Schema
     {

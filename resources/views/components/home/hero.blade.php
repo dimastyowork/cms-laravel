@@ -1,5 +1,17 @@
+<style>
+  /* Fix hero section to avoid navbar overlap */
+  .hero.section {
+    padding-top: 140px !important; /* Adjust based on navbar height */
+  }
+  
+  @media (max-width: 768px) {
+    .hero.section {
+      padding-top: 120px !important;
+    }
+  }
+</style>
 
-    <section id="hero" class="hero section">
+  <section id="hero" class="hero section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -15,49 +27,30 @@
                   <i class="bi bi-clock"></i>
                   <span>24/7 Emergency</span>
                 </div>
-                <!-- <div class="badge-item">
-                  <i class="bi bi-star-fill"></i>
-                  <span>4.9/5 Rating</span>
-                </div> -->
               </div>
 
-              <h1 data-aos="fade-right" data-aos-delay="300">
-                @if($about)
-                  {!! str_replace($about->title, '<span class="highlight">' . explode(' ', $about->title)[0] . '</span> ' . implode(' ', array_slice(explode(' ', $about->title), 1)), $about->title) !!}
-                @else
+              @if($abouts && $abouts->count() > 0)
+                <div class="hero-text-slider">
+                  @foreach($abouts as $index => $heroItem)
+                    <div class="hero-text-slide {{ $index === 0 ? 'active' : '' }}" data-slide="{{ $index }}">
+                      <h1 data-aos="fade-right" data-aos-delay="300">
+                        {!! str_replace($heroItem->title, '<span class="highlight">' . explode(' ', $heroItem->title)[0] . '</span> ' . implode(' ', array_slice(explode(' ', $heroItem->title), 1)), $heroItem->title) !!}
+                      </h1>
+
+                      <p class="hero-description" data-aos="fade-right" data-aos-delay="400">
+                        {{ $heroItem->description }}
+                      </p>
+                    </div>
+                  @endforeach
+                </div>
+              @else
+                <h1 data-aos="fade-right" data-aos-delay="300">
                   Selamat Datang di <span class="highlight">RS Bunda</span>
-                @endif
-              </h1>
-
-              <p class="hero-description" data-aos="fade-right" data-aos-delay="400">
-                {{ $about ? $about->description : 'Kami berkomitmen untuk memberikan layanan kesehatan terbaik dengan sentuhan personal. Website kami sedang dalam pembaruan untuk memberikan informasi yang lebih lengkap.' }}
-              </p>
-
-              <!-- <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">
-                <div class="stat-item">
-                  <h3><span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2"
-                      class="purecounter"></span>+</h3>
-                  <p>Years Experience</p>
-                </div>
-                <div class="stat-item">
-                  <h3><span data-purecounter-start="0" data-purecounter-end="5000" data-purecounter-duration="2"
-                      class="purecounter"></span>+</h3>
-                  <p>Patients Treated</p>
-                </div>
-                <div class="stat-item">
-                  <h3><span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="2"
-                      class="purecounter"></span>+</h3>
-                  <p>Medical Experts</p>
-                </div>
-              </div>
-
-              <div class="hero-actions" data-aos="fade-right" data-aos-delay="600">
-                <a href="appointment.html" class="btn btn-primary">Book Appointment</a>
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-outline glightbox">
-                  <i class="bi bi-play-circle me-2"></i>
-                  Watch Our Story
-                </a>
-              </div> -->
+                </h1>
+                <p class="hero-description" data-aos="fade-right" data-aos-delay="400">
+                  Kami berkomitmen untuk memberikan layanan kesehatan terbaik dengan sentuhan personal. Website kami sedang dalam pembaruan untuk memberikan informasi yang lebih lengkap.
+                </p>
+              @endif
 
               <div class="emergency-contact" data-aos="fade-right" data-aos-delay="700">
                 <div class="emergency-icon">
@@ -68,37 +61,65 @@
                   <strong>{{ optional($settings)->phone ?? '-' }}</strong>
                 </div>
               </div>
+
+              @if($abouts && $abouts->count() > 1)
+                <!-- Slider Controls -->
+                <div class="hero-slider-controls" data-aos="fade-right" data-aos-delay="800">
+                  <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                  <div class="slider-dots">
+                    @foreach($abouts as $index => $heroItem)
+                      <span class="dot {{ $index === 0 ? 'active' : '' }}" onclick="goToSlide({{ $index }})"></span>
+                    @endforeach
+                  </div>
+                  <button class="slider-btn next-btn" onclick="changeSlide(1)">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                </div>
+              @endif
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
-              <div class="main-image">
-                <img src="{{ $about && $about->photo ? asset('storage/' . $about->photo) : asset('assets/img/health/staff-10.webp') }}" alt="{{ $about ? $about->title : 'Modern Healthcare Facility' }}" class="img-fluid">
-                <div class="floating-card appointment-card">
-                  <div class="card-icon">
-                    <i class="bi bi-calendar-check"></i>
-                  </div>
-                  <div class="card-content">
-                    <h6>Coming soon</h6>
-                    <!-- <p>Today 2:30 PM</p> -->
-                    <small>RS Asa Bunda</small>
+              @if($abouts && $abouts->count() > 0)
+                <!-- Image Slider -->
+                <div class="hero-image-slider">
+                  @foreach($abouts as $index => $heroItem)
+                    <div class="hero-image-slide {{ $index === 0 ? 'active' : '' }}" data-slide="{{ $index }}">
+                      <div class="main-image">
+                        <img src="{{ $heroItem->photo ? asset('storage/' . $heroItem->photo) : asset('assets/img/health/staff-10.webp') }}" 
+                             alt="{{ $heroItem->title }}" 
+                             class="img-fluid">
+                        <div class="floating-card appointment-card">
+                          <div class="card-icon">
+                            <i class="bi bi-calendar-check"></i>
+                          </div>
+                          <div class="card-content">
+                            <h6>Coming soon</h6>
+                            <small>RS Asa Bunda</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  @endforeach
+                </div>
+              @else
+                <div class="main-image">
+                  <img src="{{ asset('assets/img/health/staff-10.webp') }}" alt="Modern Healthcare Facility" class="img-fluid">
+                  <div class="floating-card appointment-card">
+                    <div class="card-icon">
+                      <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <div class="card-content">
+                      <h6>Coming soon</h6>
+                      <small>RS Asa Bunda</small>
+                    </div>
                   </div>
                 </div>
-                <!-- <div class="floating-card rating-card">
-                  <div class="card-content">
-                    <div class="rating-stars">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                    </div>
-                    <h6>4.9/5</h6>
-                    <small>1,234 Reviews</small>
-                  </div>
-                </div> -->
-              </div>
+              @endif
+              
               <div class="background-elements">
                 <div class="element element-1"></div>
                 <div class="element element-2"></div>
@@ -111,3 +132,165 @@
       </div>
 
     </section>
+
+    @if($abouts && $abouts->count() > 1)
+    <style>
+      /* Hero Slider Styles */
+      .hero-text-slider,
+      .hero-image-slider {
+        position: relative;
+      }
+
+      .hero-text-slide,
+      .hero-image-slide {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .hero-text-slide.active,
+      .hero-image-slide.active {
+        display: block;
+        opacity: 1;
+      }
+
+      .hero-slider-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .slider-btn {
+        background: rgba(var(--accent-color-rgb), 0.1);
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .slider-btn:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .slider-dots {
+        display: flex;
+        gap: 0.5rem;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(var(--accent-color-rgb), 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: var(--accent-color);
+        width: 30px;
+        border-radius: 6px;
+      }
+
+      .dot:hover {
+        background: rgba(var(--accent-color-rgb), 0.6);
+      }
+
+      /* Animation for slide transition */
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .hero-text-slide.active,
+      .hero-image-slide.active {
+        animation: slideIn 0.5s ease-in-out;
+      }
+    </style>
+
+    <script>
+      let currentSlide = 0;
+      const totalSlides = {{ $abouts->count() }};
+      let autoSlideInterval;
+
+      function showSlide(n) {
+        const textSlides = document.querySelectorAll('.hero-text-slide');
+        const imageSlides = document.querySelectorAll('.hero-image-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        if (n >= totalSlides) {
+          currentSlide = 0;
+        } else if (n < 0) {
+          currentSlide = totalSlides - 1;
+        } else {
+          currentSlide = n;
+        }
+
+        textSlides.forEach(slide => {
+          slide.classList.remove('active');
+        });
+        imageSlides.forEach(slide => {
+          slide.classList.remove('active');
+        });
+        dots.forEach(dot => {
+          dot.classList.remove('active');
+        });
+
+        textSlides[currentSlide].classList.add('active');
+        imageSlides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+
+      function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+        resetAutoSlide();
+      }
+
+      function goToSlide(n) {
+        showSlide(n);
+        resetAutoSlide();
+      }
+
+      function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+      }
+
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+          changeSlide(1);
+        }, 10000);
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        startAutoSlide();
+      });
+      const heroSection = document.querySelector('.hero');
+      if (heroSection) {
+        heroSection.addEventListener('mouseenter', () => {
+          clearInterval(autoSlideInterval);
+        });
+        heroSection.addEventListener('mouseleave', () => {
+          startAutoSlide();
+        });
+      }
+    </script>
+    @endif
+

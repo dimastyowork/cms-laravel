@@ -27,6 +27,8 @@ class ScheduleResource extends Resource
     protected static UnitEnum|string|null $navigationGroup = 'Manajemen Medis';
     
     protected static ?string $navigationLabel = 'Jadwal Praktik';
+
+    protected static ?string $pluralModelLabel = 'Jadwal Praktik';
     
     protected static ?int $navigationSort = 2;
 

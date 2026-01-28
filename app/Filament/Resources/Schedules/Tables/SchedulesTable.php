@@ -19,33 +19,28 @@ class SchedulesTable
                 TextColumn::make('doctor.name')
                     ->label('Dokter')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->weight('bold')
+                    ->icon('heroicon-m-user')
+                    ->iconColor('primary'),
+                    
                 TextColumn::make('unit.name')
                     ->label('Unit/Poliklinik')
                     ->searchable()
-                    ->sortable(),
-                TextColumn::make('days')
-                    ->label('Hari')
+                    ->sortable()
                     ->badge()
-                    ->formatStateUsing(fn (string $state): string => match($state) {
-                        'Monday' => 'Senin',
-                        'Tuesday' => 'Selasa',
-                        'Wednesday' => 'Rabu',
-                        'Thursday' => 'Kamis',
-                        'Friday' => 'Jumat',
-                        'Saturday' => 'Sabtu',
-                        'Sunday' => 'Minggu',
-                        default => $state,
-                    })
-                    ->separator(',')
-                    ->toggleable(isToggledHiddenByDefault: true), // Sembunyikan hari karena sudah ada di kolom jadwal detail
+                    ->color('info')
+                    ->icon('heroicon-m-building-office-2'),
                     
                 TextColumn::make('time_slots')
                     ->label('Jadwal Praktik')
-                    ->formatStateUsing(function ($state) {
-                        if (!is_array($state)) return '-';
+                    ->getStateUsing(function ($record) {
+                        $state = $record->time_slots;
                         
-                        // Mapping hari ke Bahasa Indonesia
+                        if (!is_array($state) || empty($state)) {
+                            return ['-'];
+                        }
+                        
                         $daysMap = [
                             'Monday' => 'Senin',
                             'Tuesday' => 'Selasa',
@@ -58,32 +53,71 @@ class SchedulesTable
                         
                         return collect($state)
                             ->map(function ($item) use ($daysMap) {
-                                $day = $daysMap[$item['day'] ?? ''] ?? ($item['day'] ?? '-');
+                                $dayKey = $item['day'] ?? '';
+                                $dayName = $daysMap[$dayKey] ?? $dayKey;
+                                
                                 $times = collect($item['slots'] ?? [])
-                                    ->map(fn($slot) => \Carbon\Carbon::parse($slot['start'])->format('H:i') . '-' . \Carbon\Carbon::parse($slot['end'])->format('H:i'))
+                                    ->map(function($slot) {
+                                        try {
+                                            $start = \Carbon\Carbon::parse($slot['start'])->format('H:i');
+                                            $end = \Carbon\Carbon::parse($slot['end'])->format('H:i');
+                                            return "{$start}-{$end}";
+                                        } catch (\Exception $e) {
+                                            return null;
+                                        }
+                                    })
+                                    ->filter()
                                     ->join(', ');
                                     
-                                return "<strong>{$day}:</strong> {$times}";
+                                return "{$dayName}: {$times}";
                             })
-                            ->join('<br>');
+                            ->filter()
+                            ->values()
+                            ->toArray();
                     })
-                    ->html()
-                    ->wrap(),
+                    ->listWithLineBreaks()
+                    ->bulleted()
+                    ->limitList(5)
+                    ->expandableLimitedList(),
+                    
                 TextColumn::make('note')
                     ->label('Catatan')
-                    ->limit(30)
+                    ->limit(50)
+                    ->tooltip(function (TextColumn $column): ?string {
+                        $state = $column->getState();
+                        if (strlen($state) <= 50) {
+                            return null;
+                        }
+                        return $state;
+                    })
+                    ->icon('heroicon-m-information-circle')
+                    ->iconColor('warning')
                     ->toggleable(),
+                    
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->label('Dibuat')
+                    ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                    
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diperbarui')
+                    ->dateTime('d M Y, H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                \Filament\Tables\Filters\SelectFilter::make('doctor_id')
+                    ->label('Dokter')
+                    ->relationship('doctor', 'name')
+                    ->searchable()
+                    ->preload(),
+                    
+                \Filament\Tables\Filters\SelectFilter::make('unit_id')
+                    ->label('Unit/Poliklinik')
+                    ->relationship('unit', 'name')
+                    ->searchable()
+                    ->preload(),
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -94,6 +128,9 @@ class SchedulesTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('doctor.name', 'asc')
+            ->striped()
+            ->paginated([10, 25, 50, 100]);
     }
 }

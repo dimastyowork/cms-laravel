@@ -24,6 +24,8 @@ class MenuResource extends Resource
     protected static UnitEnum|string|null $navigationGroup = 'Konten Website';
     
     protected static ?string $navigationLabel = 'Menu Navigasi';
+
+    protected static ?string $pluralModelLabel = 'Menu Navigasi';
     
     protected static ?int $navigationSort = 2;
 

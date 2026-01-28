@@ -27,7 +27,7 @@ class GlobalSettingResource extends Resource
 
     protected static ?string $modelLabel = 'Global Setting';
 
-    protected static ?string $pluralModelLabel = 'Global Settings';
+    protected static ?string $pluralModelLabel = 'Pengaturan Global';
 
     protected static ?int $navigationSort = 1;
 

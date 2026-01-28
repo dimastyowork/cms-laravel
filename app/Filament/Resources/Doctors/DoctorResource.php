@@ -27,6 +27,8 @@ class DoctorResource extends Resource
     protected static UnitEnum|string|null $navigationGroup = 'Manajemen Medis';
     
     protected static ?string $navigationLabel = 'Dokter';
+
+    protected static ?string $pluralModelLabel = 'Dokter';
     
     protected static ?int $navigationSort = 1;
 

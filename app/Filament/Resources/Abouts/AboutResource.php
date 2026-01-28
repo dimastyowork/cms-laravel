@@ -26,6 +26,8 @@ class AboutResource extends Resource
     protected static UnitEnum|string|null $navigationGroup = 'Konten Website';
     
     protected static ?string $navigationLabel = 'Tentang Kami';
+
+    protected static ?string $pluralModelLabel = 'Tentang Kami';
     
     protected static ?int $navigationSort = 3;
 

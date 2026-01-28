@@ -14,7 +14,8 @@ class HomeController extends Controller
     public function index()
     {
         $settings = GlobalSetting::first();
-        $about = About::where('is_active', true)->first();
+        $abouts = About::where('is_active', true)->get();
+        $about = $abouts->first();
         
         $doctors = Doctor::query()
             ->latest()
@@ -38,6 +39,6 @@ class HomeController extends Controller
             
         $services = Service::all();
 
-        return view('pages.home', compact('settings', 'about', 'doctors', 'polikliniks', 'services'));
+        return view('pages.home', compact('settings', 'about', 'abouts', 'doctors', 'polikliniks', 'services'));
     }
 }

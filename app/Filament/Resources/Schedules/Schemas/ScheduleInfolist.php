@@ -13,34 +13,69 @@ class ScheduleInfolist
         return $schema
             ->components([
                 TextEntry::make('doctor.name')
-                    ->label('Dokter'),
+                    ->label('Dokter')
+                    ->icon('heroicon-m-user')
+                    ->iconColor('primary')
+                    ->weight('bold'),
+                    
                 TextEntry::make('unit.name')
-                    ->label('Unit'),
-                TextEntry::make('days')
-                    ->label('Hari Praktik')
+                    ->label('Unit/Poliklinik')
+                    ->icon('heroicon-m-building-office-2')
                     ->badge()
-                    ->formatStateUsing(fn (string $state): string => match($state) {
-                        'Monday' => 'Senin',
-                        'Tuesday' => 'Selasa',
-                        'Wednesday' => 'Rabu',
-                        'Thursday' => 'Kamis',
-                        'Friday' => 'Jumat',
-                        'Saturday' => 'Sabtu',
-                        'Sunday' => 'Minggu',
-                        default => $state,
+                    ->color('info'),
+                    
+                TextEntry::make('time_slots')
+                    ->label('Jadwal Praktik')
+                    ->getStateUsing(function ($record) {
+                        $state = $record->time_slots;
+                        
+                        if (!is_array($state) || empty($state)) {
+                            return ['-'];
+                        }
+                        
+                        // Mapping hari ke Bahasa Indonesia
+                        $daysMap = [
+                            'Monday' => 'Senin',
+                            'Tuesday' => 'Selasa',
+                            'Wednesday' => 'Rabu',
+                            'Thursday' => 'Kamis',
+                            'Friday' => 'Jumat',
+                            'Saturday' => 'Sabtu',
+                            'Sunday' => 'Minggu',
+                        ];
+                        
+                        return collect($state)
+                            ->map(function ($item) use ($daysMap) {
+                                $dayKey = $item['day'] ?? '';
+                                $dayName = $daysMap[$dayKey] ?? $dayKey;
+                                
+                                $times = collect($item['slots'] ?? [])
+                                    ->map(function($slot) {
+                                        try {
+                                            $start = \Carbon\Carbon::parse($slot['start'])->format('H:i');
+                                            $end = \Carbon\Carbon::parse($slot['end'])->format('H:i');
+                                            return "{$start} - {$end}";
+                                        } catch (\Exception $e) {
+                                            return null;
+                                        }
+                                    })
+                                    ->filter()
+                                    ->join(', ');
+                                    
+                                return "{$dayName}: {$times}";
+                            })
+                            ->filter()
+                            ->values()
+                            ->toArray();
                     })
-                    ->separator(','),
-                RepeatableEntry::make('time_slots')
-                    ->label('Jam Praktik')
-                    ->schema([
-                        TextEntry::make('start')
-                            ->label('Buka'),
-                        TextEntry::make('end')
-                            ->label('Tutup'),
-                    ])
-                    ->columns(2),
+                    ->listWithLineBreaks()
+                    ->bulleted(),
+                    
                 TextEntry::make('note')
-                    ->label('Catatan'),
+                    ->label('Catatan')
+                    ->icon('heroicon-m-information-circle')
+                    ->iconColor('warning')
+                    ->placeholder('Tidak ada catatan'),
             ]);
     }
 }

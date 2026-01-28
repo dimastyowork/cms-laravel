@@ -4,9 +4,8 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row align-items-center">
-          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+          <!-- <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
             <div class="about-content">
-              <!-- <h2 class="section-heading">{{ $about->title ?? 'Visi Misi' }}</h2> -->
               
               @if($about && $about->vision)
                 <div class="vision-section mb-4">
@@ -16,8 +15,6 @@
                   </div>
                 </div>
               @elseif(!($about))
-                 <!-- Empty state handles by the else block below covering the whole section content if needed, 
-                      but here we are inside the structure. Let's make it clean. -->
               @endif
 
               @if($about && $about->mission)
@@ -35,35 +32,16 @@
                 />
               @endif
 
-              <!-- <div class="stats-grid">
-                <div class="stat-item">
-                  <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="15000"
-                    data-purecounter-duration="1"></div>
-                  <div class="stat-label">Patients Served</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="25"
-                    data-purecounter-duration="1"></div>
-                  <div class="stat-label">Years of Excellence</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="50"
-                    data-purecounter-duration="1"></div>
-                  <div class="stat-label">Medical Specialists</div>
-                </div>
-              </div> -->
-
               <div class="cta-section">
-                <!-- <a href="about.html" class="btn-primary">Learn More About Us</a> -->
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="about-visual">
-              <div class="main-image">
+              <!-- <div class="main-image">
                 <img src="{{ $about && $about->photo ? asset('storage/' . $about->photo) : asset('assets/img/health/facilities-9.webp') }}" alt="{{ $about->title ?? 'Modern medical facility' }}" class="img-fluid">
-              </div>
+              </div> -->
               <!-- <div class="floating-card">
                 <div class="card-content">
                   <div class="icon">

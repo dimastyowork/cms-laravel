@@ -42,6 +42,14 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Widgets\ContentStatsOverview::class,
                 \App\Filament\Widgets\LatestContentWidget::class,
             ])
+            ->renderHook(
+                'panels::body.end',
+                fn (): string => '<link rel="stylesheet" href="' . asset('css/filament-richtext.css') . '">'
+            )
+            ->renderHook(
+                'panels::body.end',
+                fn (): string => '<script src="' . asset('js/filament-richtext.js') . '"></script>'
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

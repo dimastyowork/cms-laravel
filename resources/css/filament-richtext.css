@@ -1,0 +1,126 @@
+/* Styling untuk gambar dalam RichEditor */
+.filament-rich-editor img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.filament-rich-editor img:hover {
+    transform: scale(1.02);
+}
+
+/* Wrapper untuk gambar yang bisa di-resize */
+.filament-rich-editor .image-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.filament-rich-editor .image-wrapper img {
+    display: block;
+}
+
+/* Kontrol resize gambar */
+.filament-rich-editor .image-resize-handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #3b82f6;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: nwse-resize;
+    bottom: -5px;
+    right: -5px;
+    display: none;
+}
+
+.filament-rich-editor .image-wrapper:hover .image-resize-handle {
+    display: block;
+}
+
+/* Ukuran gambar preset */
+.filament-rich-editor img[data-size="small"] {
+    max-width: 25%;
+}
+
+.filament-rich-editor img[data-size="medium"] {
+    max-width: 50%;
+}
+
+.filament-rich-editor img[data-size="large"] {
+    max-width: 75%;
+}
+
+.filament-rich-editor img[data-size="full"] {
+    max-width: 100%;
+}
+
+/* Alignment */
+.filament-rich-editor img[data-align="left"] {
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filament-rich-editor img[data-align="right"] {
+    float: right;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filament-rich-editor img[data-align="center"] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Clear float */
+.filament-rich-editor::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Styling untuk preview konten */
+.prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.prose img[data-size="small"] {
+    max-width: 25%;
+}
+
+.prose img[data-size="medium"] {
+    max-width: 50%;
+}
+
+.prose img[data-size="large"] {
+    max-width: 75%;
+}
+
+.prose img[data-size="full"] {
+    max-width: 100%;
+}
+
+.prose img[data-align="left"] {
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.prose img[data-align="right"] {
+    float: right;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.prose img[data-align="center"] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

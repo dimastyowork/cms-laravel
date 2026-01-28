@@ -1,0 +1,33 @@
+/* Styling untuk gambar dalam RichEditor dan konten */
+
+/* Styling untuk gambar di editor */
+.tiptap img,
+.ProseMirror img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    display: inline-block;
+}
+
+/* Styling untuk gambar di konten yang ditampilkan */
+.prose img,
+.content img,
+article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+/* Responsive image sizes */
+@media (max-width: 768px) {
+    .tiptap img,
+    .ProseMirror img,
+    .prose img,
+    .content img,
+    article img {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}

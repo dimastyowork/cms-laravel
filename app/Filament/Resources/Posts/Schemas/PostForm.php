@@ -35,9 +35,30 @@ class PostForm
                     ->required(),
                 RichEditor::make('content')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->toolbarButtons([
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'table',
+                        'underline',
+                        'undo',
+                    ])
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('posts/content')
+                    ->fileAttachmentsVisibility('public'),
                 FileUpload::make('image')
                     ->image()
+                    ->disk('public')
                     ->directory('posts'),
                 Toggle::make('is_active')
                     ->required()

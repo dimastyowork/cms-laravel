@@ -8,24 +8,21 @@
     <div class="container" data-aos="fade-up" data-aos-delay="100">
       <div class="row gy-4">
         @forelse($polikliniks as $poliklinik)
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 2) * 100 + 100 }}">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3) * 100 + 100 }}">
             <div class="specialty-card h-100 shadow-sm">
-              <div class="specialty-content">
-                <div class="specialty-meta">
-                  <span class="specialty-label">Specialized Care</span>
-                </div>
-                <h3>{{ $poliklinik->name }}</h3>
-                <p>{{ Str::limit($poliklinik->description, 150) }}</p>
-                <div class="specialty-features">
-                </div>
-                <a href="#!" class="specialty-link">
-                  Explore {{ $poliklinik->name }} <i class="bi bi-arrow-right"></i>
-                </a>
-              </div>
-              <div class="specialty-visual">
+              <a href="{{ route('polyclinic.show', $poliklinik->slug) }}" class="specialty-visual">
                 <img src="{{ $poliklinik->image_url }}" alt="{{ $poliklinik->name }}" class="img-fluid">
                 <div class="visual-overlay">
                   <i class="bi bi-heart-pulse"></i>
+                </div>
+              </a>
+              <div class="specialty-content">
+                <h3>{{ $poliklinik->name }}</h3>
+                <p>{{ Str::limit($poliklinik->description, 120) }}</p>
+                <div class="mt-auto">
+                  <a href="{{ route('polyclinic.show', $poliklinik->slug) }}" class="specialty-link">
+                    Explore {{ $poliklinik->name }} <i class="bi bi-arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div><!-- End Specialty Card -->
@@ -48,27 +45,47 @@
   </section>
 
   <style>
-    /* Ensure cards look good in a grid */
     .specialty-card {
       background: #fff;
       border-radius: 20px;
       overflow: hidden;
       display: flex;
+      flex-direction: column !important;
       height: 100%;
-      min-height: 250px;
       transition: all 0.3s ease;
       position: relative;
     }
     
-    @media (max-width: 768px) {
-      .specialty-card {
-        flex-direction: column;
-      }
-      .specialty-visual {
-        order: -1;
-        width: 100% !important;
-        height: 200px;
-      }
+    .specialty-visual {
+      display: block;
+      width: 100% !important;
+      height: 220px !important;
+      overflow: hidden;
+    }
+
+    .specialty-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover !important;
+    }
+
+    .specialty-content {
+      width: 100% !important;
+      padding: 30px !important;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .specialty-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .specialty-content p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 20px;
     }
   </style>
 </x-layouts.app>

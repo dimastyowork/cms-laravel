@@ -90,6 +90,7 @@
             <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a></li>
             <li><a href="{{ route('doctor.index') }}" class="{{ request()->routeIs('doctor.*') ? 'active' : '' }}">Dokter</a></li>
             <li><a href="{{ route('polyclinic.index') }}" class="{{ request()->routeIs('polyclinic.*') ? 'active' : '' }}">Poliklinik</a></li>
+            <li><a href="{{ route('post.index') }}" class="{{ request()->routeIs('post.*') ? 'active' : '' }}">Berita & Artikel</a></li>
             
             @foreach($menus as $menu)
               @if($menu->children->count() > 0)

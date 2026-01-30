@@ -1,10 +1,10 @@
 @props(['about'])
-    <section id="home-about" class="home-about section">
+    <!-- <section id="home-about" class="home-about section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row align-items-center">
-          <!-- <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
             <div class="about-content">
               
               @if($about && $about->vision)
@@ -35,14 +35,14 @@
               <div class="cta-section">
               </div>
             </div>
-          </div> -->
+          </div>
 
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
             <div class="about-visual">
-              <!-- <div class="main-image">
+              <div class="main-image">
                 <img src="{{ $about && $about->photo ? asset('storage/' . $about->photo) : asset('assets/img/health/facilities-9.webp') }}" alt="{{ $about->title ?? 'Modern medical facility' }}" class="img-fluid">
-              </div> -->
-              <!-- <div class="floating-card">
+              </div>
+              <div class="floating-card">
                 <div class="card-content">
                   <div class="icon">
                     <i class="bi bi-heart-pulse"></i>
@@ -52,17 +52,17 @@
                     <p>Always here when you need us most</p>
                   </div>
                 </div>
-              </div> -->
-              <!-- <div class="experience-badge">
+              </div>
+              <div class="experience-badge">
                 <div class="badge-content">
                   <span class="years">25+</span>
                   <span class="text">Years of Trusted Care</span>
                 </div>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>
 
       </div>
 
-    </section>
+    </section> -->

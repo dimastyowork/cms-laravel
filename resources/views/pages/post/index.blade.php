@@ -2,7 +2,7 @@
   <section class="section" style="padding-top: 150px;">
     <div class="container" data-aos="fade-up">
       <div class="section-title">
-        <h2>Berita & Artikel</h2>
+        <!-- <h2>Berita & Artikel</h2> -->
         <p>Informasi terbaru seputar kesehatan dan kegiatan rumah sakit</p>
       </div>
 

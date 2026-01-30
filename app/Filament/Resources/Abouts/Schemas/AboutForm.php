@@ -25,12 +25,6 @@ class AboutForm
                 Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
-                RichEditor::make('vision')
-                    ->label('Visi')
-                    ->columnSpanFull(),
-                RichEditor::make('mission')
-                    ->label('Misi')
-                    ->columnSpanFull(),
                 Toggle::make('is_active')
                     ->required(),
             ]);

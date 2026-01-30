@@ -15,4 +15,12 @@ class PolyclinicController extends Controller
 
         return view('pages.polyclinic.index', compact('settings', 'polikliniks'));
     }
+
+    public function show(Unit $unit)
+    {
+        $settings = GlobalSetting::first();
+        $unit->load(['schedules.doctor']);
+
+        return view('pages.polyclinic.show', compact('settings', 'unit'));
+    }
 }

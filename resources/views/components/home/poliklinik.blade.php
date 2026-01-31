@@ -66,9 +66,11 @@
           <div class="row align-items-center">
             <div class="col-lg-8">
               <div class="emergency-content">
-                <h3>Emergency Services Available 24/7</h3>
-                <p>Our emergency department is equipped with state-of-the-art technology and staffed by board-certified
-                  emergency physicians ready to provide immediate care.</p>
+                <h3>Layanan Darurat 24 Jam</h3>
+                <p>
+                  Instalasi gawat darurat kami dilengkapi dengan teknologi modern dan didukung
+                  oleh dokter spesialis yang siap memberikan pelayanan medis dengan cepat dan profesional.
+                </p>
               </div>
             </div>
             <div class="col-lg-4 text-lg-end">

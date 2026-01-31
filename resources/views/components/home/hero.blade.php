@@ -107,7 +107,7 @@
                 </div>
               @else
                 <div class="main-image">
-                  <img src="{{ asset('assets/img/health/staff-10.webp') }}" alt="Modern Healthcare Facility" class="img-fluid">
+                  <img src="{{ asset('assets/img/asabunda.jpeg') }}" alt="Modern Healthcare Facility" class="img-fluid">
                   <div class="floating-card appointment-card">
                     <div class="card-icon">
                       <i class="bi bi-calendar-check"></i>

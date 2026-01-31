@@ -27,19 +27,33 @@ class MenuForm
                     ->searchable()
                     ->preload(),
 
+                Select::make('page_id')
+                    ->label('Link to Page')
+                    ->relationship('page', 'title')
+                    ->searchable()
+                    ->preload()
+                    ->live()
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('post_id', null);
+                        $set('url', null);
+                    }),
+
                 Select::make('post_id')
                     ->label('Link to Post/News')
                     ->relationship('post', 'title')
                     ->searchable()
                     ->preload()
                     ->live()
-                    ->afterStateUpdated(fn (Set $set) => $set('url', null)),
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('page_id', null);
+                        $set('url', null);
+                    }),
 
                 TextInput::make('url')
                     ->label('Custom URL')
                     ->placeholder('https://... or #')
-                    ->disabled(fn (Get $get) => filled($get('post_id')))
-                    ->dehydrated(fn (Get $get) => blank($get('post_id'))),
+                    ->disabled(fn (Get $get) => filled($get('post_id')) || filled($get('page_id')))
+                    ->dehydrated(fn (Get $get) => blank($get('post_id')) && blank($get('page_id'))),
 
                 TextInput::make('order')
                     ->numeric()

@@ -11,6 +11,7 @@ class Menu extends Model
         'title',
         'url',
         'post_id',
+        'page_id',
         'parent_id',
         'order',
         'is_active',
@@ -31,8 +32,17 @@ class Menu extends Model
         return $this->belongsTo(Post::class);
     }
 
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
+
     public function getLinkAttribute()
     {
+        if ($this->page_id && $this->page) {
+            return route('page.show', $this->page->slug);
+        }
+
         if ($this->post_id && $this->post) {
             return route('post.show', $this->post->slug);
         }

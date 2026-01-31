@@ -7,7 +7,7 @@
       </div>
 
       <div class="row gy-4">
-        @foreach($posts as $post)
+        @forelse($posts as $post)
           <div class="col-lg-4 col-md-6">
             <div class="card h-100 shadow-sm border-0">
               @if($post->image)
@@ -24,7 +24,15 @@
               </div>
             </div>
           </div>
-        @endforeach
+        @empty
+          <div class="col-12 text-center py-5">
+            <div class="empty-state mb-4">
+               <i class="bi bi-newspaper display-1 text-muted" style="font-size: 5rem; opacity: 0.2;"></i>
+            </div>
+            <h4 class="fw-bold text-secondary mb-2">Belum ada Berita</h4>
+            <p class="text-muted">Saat ini belum ada berita atau artikel yang tersedia. <br>Nantikan informasi terbaru dari kami.</p>
+          </div>
+        @endforelse
       </div>
 
       <div class="mt-5 d-flex justify-content-center">

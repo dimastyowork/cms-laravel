@@ -154,15 +154,15 @@
               <div class="contact-info mt-5">
                 <div class="contact-item">
                   <i class="bi bi-geo-alt"></i>
-                  <span>{{ optional($settings)->address ?? '-' }}</span>
+                  <span>{{ optional($settings)->address ?? 'Jl. Ovensari Raya No. 30, Kadilangu, Baki, Sukoharjo.' }}</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-telephone"></i>
-                  <span>{{ optional($settings)->phone ?? '-' }}</span>
+                  <span>{{ optional($settings)->phone ?? '0271 6007000 / 0813-19431-1253' }}</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-envelope"></i>
-                  <span>{{ optional($settings)->email ?? '-' }}</span>
+                  <span>{{ optional($settings)->email ?? 'rsasabunda@gmail.com' }}</span>
                 </div>
               </div>
             </div>

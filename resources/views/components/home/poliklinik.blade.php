@@ -8,51 +8,55 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="departments-carousel swiper" id="departmentsSwiper" data-aos="fade-up" data-aos-delay="200">
-          <div class="swiper-wrapper">
-            @php
-              $polikliniksChunks = $polikliniks->chunk(2);
-            @endphp
-            @forelse($polikliniksChunks as $chunk)
-            <div class="swiper-slide">
-              <div class="slide-grid">
-                @foreach($chunk as $department)
-                <div class="specialty-card" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 100 }}">
-                  <a href="{{ route('polyclinic.show', $department->slug) }}" class="specialty-visual">
-                    <img src="{{ $department->image_url }}" alt="{{ $department->name }}" class="img-fluid">
-                    <div class="visual-overlay">
-                      <i class="bi bi-heart-pulse"></i>
+        <div class="departments-slider-wrapper">
+          <div class="departments-carousel swiper" id="departmentsSwiper" data-aos="fade-up" data-aos-delay="200">
+            <div class="swiper-wrapper">
+              @php
+                $polikliniksChunks = $polikliniks->chunk(2);
+              @endphp
+              @forelse($polikliniksChunks as $chunk)
+              <div class="swiper-slide">
+                <div class="slide-grid">
+                  @foreach($chunk as $department)
+                  <div class="specialty-card modern-card" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 100 }}">
+                    <a href="{{ route('polyclinic.show', $department->slug) }}" class="specialty-visual">
+                      <img src="{{ $department->image_url }}" alt="{{ $department->name }}" class="img-fluid">
+                      <div class="visual-overlay">
+                        <i class="bi bi-heart-pulse"></i>
+                      </div>
+                    </a>
+                    <div class="specialty-content">
+                      <h3>{{ $department->name }}</h3>
+                      <p>{{ Str::limit($department->description, 100) }}</p>
+                      <div class="mt-auto">
+                        <a href="{{ route('polyclinic.show', $department->slug) }}" class="specialty-link">
+                          Explore {{ $department->name }} <i class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
                     </div>
-                  </a>
-                  <div class="specialty-content">
-                    <h3>{{ $department->name }}</h3>
-                    <p>{{ Str::limit($department->description, 100) }}</p>
-                    <div class="mt-auto">
-                      <a href="{{ route('polyclinic.show', $department->slug) }}" class="specialty-link">
-                        Explore {{ $department->name }} <i class="bi bi-arrow-right"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div><!-- End Specialty Card -->
-                @endforeach
+                  </div><!-- End Specialty Card -->
+                  @endforeach
+                </div>
               </div>
-            </div>
-            @empty
-            <div class="swiper-slide">
-              <div class="col-12">
-                <x-empty-state 
-                  icon="bi bi-hospital" 
-                  title="Layanan Poliklinik Belum Tersedia" 
-                  subtitle="Kami sedang menyiapkan informasi layanan terbaik untuk Anda. Terima kasih atas kesabaran Anda."
-                />
+              @empty
+              <div class="swiper-slide">
+                <div class="col-12">
+                  <x-empty-state 
+                    icon="bi bi-hospital" 
+                    title="Layanan Poliklinik Belum Tersedia" 
+                    subtitle="Kami sedang menyiapkan informasi layanan terbaik untuk Anda. Terima kasih atas kesabaran Anda."
+                  />
+                </div>
               </div>
+              @endforelse
             </div>
-            @endforelse
+            
+            <div class="swiper-pagination"></div>
           </div>
           
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-pagination"></div>
+          <!-- Navigation Buttons Outside Swiper -->
+          <div class="swiper-button-next dep-next"></div>
+          <div class="swiper-button-prev dep-prev"></div>
         </div>
 
         <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">

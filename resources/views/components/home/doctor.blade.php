@@ -47,7 +47,7 @@
           <div class="slide-content" style="grid-template-columns: repeat(3, 1fr); display: grid; gap: 20px;">
             @forelse($doctors->take(6) as $doctor)
             <div class="doctor-wrapper">
-              <div class="doctor-profile mb-0 shadow-sm" data-aos="zoom-in" data-aos-delay="{{ ($loop->index % 3) * 100 + 100 }}">
+              <div class="doctor-profile mb-0 modern-card" data-aos="zoom-in" data-aos-delay="{{ ($loop->index % 3) * 100 + 100 }}">
                 <div class="profile-header mb-2">
                   <div class="doctor-avatar">
                     <img src="{{ $doctor->photo_url }}" alt="{{ $doctor->name }}" class="img-fluid">

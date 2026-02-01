@@ -269,8 +269,8 @@
           clickable: true,
         },
         navigation: {
-          nextEl: '#departmentsSwiper .swiper-button-next',
-          prevEl: '#departmentsSwiper .swiper-button-prev',
+          nextEl: '.dep-next',
+          prevEl: '.dep-prev',
         }
       });
     });

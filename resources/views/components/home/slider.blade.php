@@ -91,8 +91,8 @@
                       <div class="main-image">
                         <img src="{{ $heroItem->photo ? asset('storage/' . $heroItem->photo) : asset('assets/img/health/staff-10.webp') }}" 
                              alt="{{ $heroItem->title }}" 
-                             class="img-fluid">
-                        <div class="floating-card appointment-card">
+                             class="img-fluid" style="border-radius: var(--border-radius-lg); box-shadow: var(--box-shadow-soft);">
+                        <div class="floating-card appointment-card modern-card glass-effect">
                           <div class="card-icon">
                             <i class="bi bi-calendar-check"></i>
                           </div>
@@ -107,8 +107,8 @@
                 </div>
               @else
                 <div class="main-image">
-                  <img src="{{ asset('assets/img/asabunda.jpeg') }}" alt="Modern Healthcare Facility" class="img-fluid">
-                  <div class="floating-card appointment-card">
+                  <img src="{{ asset('assets/img/asabunda.jpeg') }}" alt="Modern Healthcare Facility" class="img-fluid" style="border-radius: var(--border-radius-lg); box-shadow: var(--box-shadow-soft);">
+                  <div class="floating-card appointment-card modern-card glass-effect">
                     <div class="card-icon">
                       <i class="bi bi-calendar-check"></i>
                     </div>

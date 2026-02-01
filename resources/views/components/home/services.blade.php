@@ -11,7 +11,7 @@
         <div class="row g-0">
 
           <div class="col-lg-8" data-aos="fade-right" data-aos-delay="200">
-            <div class="featured-service-main">
+            <div class="featured-service-main modern-card">
               @if($featured = $services->where('is_featured', true)->first())
               <div class="service-image-wrapper">
                 <img src="{{ $featured->image ? asset('storage/' . $featured->image) : asset('assets/img/health/consultation-4.webp') }}" alt="{{ $featured->title }}" class="img-fluid"
@@ -43,7 +43,7 @@
           <div class="col-lg-4" data-aos="fade-left" data-aos-delay="300">
             <div class="services-sidebar">
               @forelse($services->where('is_featured', false)->take(3) as $service)
-              <div class="service-item" data-aos="fade-up" data-aos-delay="{{ 400 + ($loop->index * 100) }}">
+              <div class="service-item modern-card" data-aos="fade-up" data-aos-delay="{{ 400 + ($loop->index * 100) }}">
                 <div class="service-icon-wrapper">
                   <i class="{{ $service->icon ?? 'bi bi-capsule' }}"></i>
                 </div>
@@ -71,7 +71,7 @@
           <div class="row align-items-center">
              @forelse($services->skip(4)->take(4) as $service)
             <div class="col-lg-3 col-md-6">
-              <div class="specialty-card">
+              <div class="specialty-card modern-card">
                 <div class="specialty-image">
                   <img src="{{ $service->image ? asset('storage/' . $service->image) : asset('assets/img/health/maternal-2.webp') }}" alt="{{ $service->title }}" class="img-fluid" loading="lazy">
                 </div>

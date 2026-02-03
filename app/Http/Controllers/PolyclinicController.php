@@ -11,7 +11,11 @@ class PolyclinicController extends Controller
     public function index()
     {
         $settings = GlobalSetting::first();
-        $polikliniks = Unit::latest()->paginate(12);
+        $polikliniks = Unit::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order', 'asc')
+            ->latest()
+            ->paginate(12);
 
         return view('pages.polyclinic.index', compact('settings', 'polikliniks'));
     }

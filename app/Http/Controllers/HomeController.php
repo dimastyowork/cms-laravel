@@ -18,11 +18,15 @@ class HomeController extends Controller
         $about = $abouts->first();
         
         $doctors = Doctor::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order', 'asc')
             ->latest()
             ->take(12)
             ->get();
 
         $polikliniks = Unit::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order', 'asc')
             ->latest()
             ->take(10)
             ->get();

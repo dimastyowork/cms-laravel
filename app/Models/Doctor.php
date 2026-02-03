@@ -19,6 +19,8 @@ class Doctor extends Model
         'experience_years',
         'rating',
         'reviews_count',
+        'is_active',
+        'sort_order',
     ];
 
     /**
@@ -28,6 +30,7 @@ class Doctor extends Model
     {
         return [
             'photo' => 'string',
+            'is_active' => 'boolean',
         ];
     }
 

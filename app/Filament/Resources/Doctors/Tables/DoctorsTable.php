@@ -9,6 +9,7 @@ use Filament\Actions\ViewAction;
 use Filament\Actions\DeleteAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 
 class DoctorsTable
@@ -26,6 +27,11 @@ class DoctorsTable
                 TextColumn::make('specialization')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('sort_order')
+                    ->label('Urutan')
+                    ->sortable(),
+                ToggleColumn::make('is_active')
+                    ->label('Aktif'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

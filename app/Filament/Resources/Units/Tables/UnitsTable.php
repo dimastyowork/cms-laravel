@@ -8,6 +8,8 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Actions\DeleteAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class UnitsTable
@@ -16,7 +18,7 @@ class UnitsTable
     {
         return $table
             ->columns([
-                \Filament\Tables\Columns\ImageColumn::make('image')
+                ImageColumn::make('image')
                     ->disk('public'),
                 TextColumn::make('name')
                     ->searchable()
@@ -24,6 +26,11 @@ class UnitsTable
                 TextColumn::make('slug')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('sort_order')
+                    ->label('Urutan')
+                    ->sortable(),
+                ToggleColumn::make('is_active')
+                    ->label('Aktif'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

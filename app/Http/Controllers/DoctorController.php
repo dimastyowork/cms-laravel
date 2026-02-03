@@ -12,7 +12,7 @@ class DoctorController extends Controller
     {
         $settings = GlobalSetting::first();
         
-        $query = Doctor::query();
+        $query = Doctor::query()->where('is_active', true);
 
         if ($request->has('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
@@ -22,7 +22,9 @@ class DoctorController extends Controller
             $query->where('specialization', $request->specialization);
         }
 
-        $doctors = $query->latest()->paginate(12);
+        $doctors = $query->orderBy('sort_order', 'asc')
+            ->latest()
+            ->paginate(12);
 
         return view('pages.doctor.index', compact('settings', 'doctors'));
     }

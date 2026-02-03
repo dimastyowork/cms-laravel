@@ -17,7 +17,16 @@ class Unit extends Model
         'description',
         'content',
         'image',
+        'is_active',
+        'sort_order',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+        ];
+    }
 
     public function schedules(): HasMany
     {

@@ -18,7 +18,6 @@
                   loading="lazy">
                 <div class="service-overlay">
                   <div class="service-badge">
-                    <i class="{{ $featured->icon ?? 'bi bi-heart-pulse' }}"></i>
                     <span>{{ $featured->title }}</span>
                   </div>
                 </div>
@@ -44,9 +43,6 @@
             <div class="services-sidebar">
               @forelse($services->where('is_featured', false)->take(3) as $service)
               <div class="service-item modern-card" data-aos="fade-up" data-aos-delay="{{ 400 + ($loop->index * 100) }}">
-                <div class="service-icon-wrapper">
-                  <i class="{{ $service->icon ?? 'bi bi-capsule' }}"></i>
-                </div>
                 <div class="service-info">
                   <h4>{{ $service->title }}</h4>
                   <p>{{ Str::limit($service->description, 80) }}</p>

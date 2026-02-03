@@ -27,7 +27,7 @@
                     </a>
                     <div class="specialty-content">
                       <h3>{{ $department->name }}</h3>
-                      <p>{{ Str::limit($department->description, 100) }}</p>
+                      <p>{{ $department->getExcerpt(100) }}</p>
                       <div class="mt-auto">
                         <a href="{{ route('polyclinic.show', $department->slug) }}" class="specialty-link">
                           Explore {{ $department->name }} <i class="bi bi-arrow-right"></i>

@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Units\Schemas;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -24,7 +26,12 @@ class UnitForm
                     ->unique(ignoreRecord: true),
                 Textarea::make('description')
                     ->columnSpanFull(),
-                \Filament\Forms\Components\FileUpload::make('image')
+                RichEditor::make('content')
+                    ->label('Konten Halaman Poliklinik')
+                    ->columnSpanFull()
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory('units/content'),
+                FileUpload::make('image')
                     ->columnSpanFull()
                     ->disk('public')
                     ->image()

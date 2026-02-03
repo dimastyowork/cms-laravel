@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Unit extends Model
 {
@@ -14,12 +15,32 @@ class Unit extends Model
         'name',
         'slug',
         'description',
+        'content',
         'image',
     ];
 
     public function schedules(): HasMany
     {
         return $this->hasMany(Schedule::class);
+    }
+
+    /**
+     * Get excerpt from description or content.
+     *
+     * @param int $limit
+     * @return string
+     */
+    public function getExcerpt($limit = 100): string
+    {
+        if ($this->description) {
+            return Str::limit($this->description, $limit);
+        }
+
+        if ($this->content) {
+            return Str::limit(strip_tags($this->content), $limit);
+        }
+
+        return '';
     }
 
     /**

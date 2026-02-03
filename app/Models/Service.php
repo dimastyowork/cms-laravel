@@ -10,11 +10,12 @@ class Service extends Model
     use HasFactory;
 
     protected $fillable = [
+        'category',
         'title',
         'description',
-        'icon',
         'image',
         'link',
         'is_featured',
+        'sort_order',
     ];
 }

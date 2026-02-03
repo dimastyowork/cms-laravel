@@ -43,9 +43,19 @@
                   </h4>
                   <div class="content text-dark">
                     @if($unit->description)
-                      {!! nl2br(e($unit->description)) !!}
-                    @else
-                      <p class="text-muted italic">Deskripsi lengkap mengenai poliklinik ini akan segera diperbarui. Kami berkomitmen untuk memberikan pelayanan kesehatan terbaik bagi Anda dan keluarga.</p>
+                      <div class="mb-4">
+                        {!! nl2br(e($unit->description)) !!}
+                      </div>
+                    @endif
+
+                    @if($unit->content)
+                      <div class="rich-content">
+                        {!! $unit->content !!}
+                      </div>
+                    @endif
+
+                    @if(!$unit->description && !$unit->content)
+                      <p class="text-muted italic">Informasi lengkap mengenai poliklinik ini akan segera diperbarui. Kami berkomitmen untuk memberikan pelayanan kesehatan terbaik bagi Anda dan keluarga.</p>
                     @endif
                   </div>
                 </div>

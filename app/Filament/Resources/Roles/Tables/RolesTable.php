@@ -26,10 +26,7 @@ class RolesTable
                     ->sortable()
                     ->toggleable(),
                 
-                TextColumn::make('description')
-                    ->label('Description')
-                    ->limit(50)
-                    ->toggleable(),
+
                 
                 TextColumn::make('permissions')
                     ->label('Permissions')

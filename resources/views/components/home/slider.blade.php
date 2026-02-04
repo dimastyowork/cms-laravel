@@ -5,7 +5,7 @@
   
   @media (max-width: 768px) {
     .hero.section {
-      padding-top: 120px !important;
+      padding-top: 80px !important;
     }
   }
 </style>
@@ -14,7 +14,7 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row align-items-center">
+        <div class="row align-items-center flex-column-reverse flex-lg-row">
           <div class="col-lg-6">
             <div class="hero-content">
               <div class="trust-badges mb-4" data-aos="fade-right" data-aos-delay="200">
@@ -80,7 +80,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-lg-6 mb-4 mb-lg-0">
             <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
               @if($abouts && $abouts->count() > 0)
                 <div class="hero-image-slider">

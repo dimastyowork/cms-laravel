@@ -60,6 +60,9 @@ class GlobalSettingForm
                             TextInput::make('facebook')->url(),
                             TextInput::make('twitter')->url(),
                             TextInput::make('instagram')->url(),
+                            TextInput::make('whatsapp')->tel()->label('WhatsApp'),
+                            TextInput::make('youtube')->url()->label('YouTube'),
+                            TextInput::make('tiktok')->url()->label('TikTok'),
                         ]),
                     ]),
 

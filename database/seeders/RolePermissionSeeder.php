@@ -12,6 +12,14 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Role::firstOrCreate(
+            ['slug' => 'admin'],
+            [
+                'name' => 'Administrator',
+                'description' => 'Super Administrator with full access',
+                'permissions' => array_keys(\App\Models\Role::getAvailablePermissions()),
+                'is_active' => true,
+            ]
+        );
     }
 }

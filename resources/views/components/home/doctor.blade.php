@@ -8,7 +8,7 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row justify-content-center mb-5 mt-5 pt-lg-5 search-row" data-aos="fade-up" data-aos-delay="200">
+        <div class="row justify-content-center mb-4 mt-3 pt-lg-3 search-row" data-aos="fade-up" data-aos-delay="200">
           <div class="col-lg-8 text-center">
             <div class="search-section">
               <h3 class="search-title">Temukan Dokter Anda</h3>

@@ -79,6 +79,19 @@
       transform: translateY(-1px);
     }
 
+    .wa-btn {
+      background: #25D366;
+      color: #fff !important;
+      border: 1px solid #25D366;
+      box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+    }
+
+    .wa-btn:hover {
+      background: #20BD5A;
+      border-color: #20BD5A;
+      transform: translateY(-1px);
+    }
+
     .topbar {
       height: 50px;
       transition: all 0.3s ease;
@@ -119,6 +132,53 @@
       }
       .scrolled .mobile-nav-toggle {
         font-size: 28px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        height: auto !important;
+        padding: 6px 0;
+      }
+      
+      .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      
+      .topbar .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      
+      .contact-info {
+        width: 100%;
+        justify-content: center !important;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        white-space: normal;
+        padding-bottom: 2px;
+        gap: 5px !important;
+      }
+      
+      .contact-info::-webkit-scrollbar {
+        display: none;
+      }
+
+      .topbar-btn {
+        padding: 4px 8px;
+        font-size: 10px;
+        flex-shrink: 0;
+        margin-bottom: 2px;
+      }
+      
+      /* Reset margins as we are wrapping */
+      .contact-info > *:first-child {
+        margin-left: 0; 
+      }
+      
+      .contact-info > *:last-child {
+        margin-right: 0;
       }
     }
 
@@ -385,8 +445,15 @@
           
           <a href="tel:{{ optional($settings)->phone }}" class="topbar-btn rs-btn">
             <i class="bi bi-telephone-fill"></i>
-            <span>RS: {{ optional($settings)->phone ?? '-' }}</span>
+            <span>{{ optional($settings)->phone ?? '-' }}</span>
           </a>
+
+          @if(optional($settings)->whatsapp)
+          <a href="https://wa.me/{{ preg_replace('/^0/', '62', preg_replace('/[^0-9]/', '', $settings->whatsapp)) }}" class="topbar-btn wa-btn" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+            <span>{{ $settings->whatsapp }}</span>
+          </a>
+          @endif
 
           <a href="tel:{{ optional($settings)->emergency_phone }}" class="topbar-btn igd-btn">
             <i class="bi bi-exclamation-triangle-fill"></i>

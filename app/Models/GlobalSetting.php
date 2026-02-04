@@ -18,6 +18,9 @@ class GlobalSetting extends Model
         'facebook',
         'twitter',
         'instagram',
+        'whatsapp',
+        'youtube',
+        'tiktok',
         'footer_columns',
         'copyright_text',
     ];

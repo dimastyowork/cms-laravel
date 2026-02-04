@@ -16,11 +16,16 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
 use Illuminate\Database\Eloquent\Builder;
 
 class ScheduleResource extends Resource
 {
+    use HasResourcePermission;
+
     protected static ?string $model = Schedule::class;
+
+    protected static ?string $resourcePermission = 'schedules';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCalendar;
 

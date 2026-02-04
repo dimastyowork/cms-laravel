@@ -90,8 +90,6 @@
   </section>
 
   <style>
-    /* Ensure the profile cards look good in a grid */
-    /* Doctor Card Modern Vertical Redesign */
     .doctor-card-modern {
       background: #fff;
       border-radius: 20px;
@@ -231,12 +229,12 @@
 
     @media (max-width: 575px) {
       .doctor-card-body {
-        flex-direction: row; /* Horizontal on mobile */
+        flex-direction: row;
         gap: 15px;
         text-align: left;
       }
       .doctor-image-section {
-        flex: 0 0 100px; /* Slightly smaller image for mobile horizontal */
+        flex: 0 0 100px;
       }
       .doctor-actions-new {
         flex-direction: row;
@@ -253,7 +251,6 @@
       }
     }
 
-    /* Doctor Card Horizontal Redesign */
     .doctor-card-horizontal {
       background: #fff;
       border-radius: 20px;
@@ -369,7 +366,6 @@
       }
     }
 
-    /* Search Section Improvements */
     .find-a-doctor .search-section .search-form .search-input-group {
       display: flex;
       background: #fff;
@@ -438,7 +434,7 @@
         background: transparent;
         border: none;
         box-shadow: none;
-        gap: 15px !important; /* Larger gap between inputs */
+        gap: 15px !important;
         padding: 0;
       }
 
@@ -472,7 +468,6 @@
       }
     }
 
-    /* Fix select dropdown specifically */
     .find-a-doctor .search-section .search-form .select-wrapper select.form-select {
       color: #000000 !important;
       appearance: none;
@@ -485,10 +480,8 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Emergency fix: if value is selected but not matching visual, force update
       const selectElement = document.querySelector('.find-a-doctor select[name="specialization"]');
       if (selectElement) {
-        // Ensure black color on load
         selectElement.style.setProperty('color', '#000000', 'important');
         selectElement.style.setProperty('background-color', '#ffffff', 'important');
       }

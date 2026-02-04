@@ -16,11 +16,16 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
 use Illuminate\Database\Eloquent\Builder;
 
 class DoctorResource extends Resource
 {
+    use HasResourcePermission;
+
     protected static ?string $model = Doctor::class;
+
+    protected static ?string $resourcePermission = 'doctors';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 

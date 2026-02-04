@@ -10,7 +10,6 @@
               .blog-details .content img { max-width: 100% !important; height: auto !important; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin: 30px auto; display: block; }
               .blog-details .content p { margin-bottom: 25px; line-height: 1.8; }
               
-              /* Table Styling */
               .blog-details .content table { width: 100%; border-collapse: collapse; margin: 30px 0; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
               .blog-details .content table th { background-color: #f9fafb; font-weight: 700; color: #111827; text-align: left; padding: 15px; border: 1px solid #e5e7eb; }
               .blog-details .content table td { padding: 15px; border: 1px solid #e5e7eb; color: #4b5563; }

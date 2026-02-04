@@ -15,3 +15,5 @@ Route::get('/page/{page:slug}', [PageController::class, 'show'])->name('page.sho
 Route::get('/poliklinik/{unit:slug}', [PolyclinicController::class, 'show'])->name('polyclinic.show');
 Route::get('/berita', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
 Route::get('/berita/{slug}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+
+

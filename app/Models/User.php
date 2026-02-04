@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'photo',
     ];
 
     /**
@@ -44,5 +45,62 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Check if user has a specific role
+     */
+    public function hasRole(string $roleName): bool
+    {
+        return $this->roles()->where('slug', $roleName)->exists();
+    }
+
+    /**
+     * Check if user has any of the given roles
+     */
+    public function hasAnyRole(array $roles): bool
+    {
+        return $this->roles()->whereIn('slug', $roles)->exists();
+    }
+
+    /**
+     * Check if user has permission to access a menu/resource
+     */
+    public function hasPermission(string $permission): bool
+    {
+        // Allow super-admin to have all permissions
+        if ($this->hasRole('super-admin')) {
+            return true;
+        }
+
+        foreach ($this->roles as $role) {
+            if ($role->hasPermission($permission)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get all permissions from all user's roles
+     */
+    public function getAllPermissions(): array
+    {
+        $permissions = [];
+        foreach ($this->roles as $role) {
+            if ($role->permissions) {
+                $permissions = array_merge($permissions, $role->permissions);
+            }
+        }
+        return array_unique($permissions);
     }
 }

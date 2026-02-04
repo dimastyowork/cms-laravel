@@ -16,6 +16,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
 use Illuminate\Support\Str;
 use UnitEnum;
 
@@ -27,7 +28,11 @@ use Filament\Actions\DeleteBulkAction;
 
 class StaticPageResource extends Resource
 {
+    use HasResourcePermission;
+
     protected static ?string $model = Page::class;
+
+    protected static ?string $resourcePermission = 'pages';
 
     protected static BackedEnum|string|null $navigationIcon = 'heroicon-o-document-text';
 

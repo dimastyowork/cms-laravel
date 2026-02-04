@@ -14,10 +14,15 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
 
 class MenuResource extends Resource
 {
+    use HasResourcePermission;
+
     protected static ?string $model = Menu::class;
+
+    protected static ?string $resourcePermission = 'menus';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedListBullet;
 

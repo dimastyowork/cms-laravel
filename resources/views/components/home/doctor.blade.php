@@ -42,38 +42,6 @@
           </div>
         </div>
 
-        <!-- <div class="doctors-grid-static" style="padding: 20px 0;">
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
-            @forelse($doctors->take(6) as $doctor)
-            <div class="col">
-              <div class="doctor-profile h-100 mb-0 modern-card" data-aos="zoom-in" data-aos-delay="{{ ($loop->index % 3) * 100 + 100 }}">
-                <div class="profile-header mb-2">
-                  <div class="doctor-avatar">
-                    <img src="{{ $doctor->photo_url }}" alt="{{ $doctor->name }}" class="img-fluid">
-                  </div>
-                  <div class="doctor-details">
-                    <h4 class="text-break">{{ $doctor->name }}</h4>
-                    <span class="specialty-tag text-break">{{ $doctor->specialization ?? 'Spesialis' }}</span>
-                  </div>
-                </div>
-                <div class="action-buttons">
-                  <a href="{{ route('doctor.show', $doctor) }}" class="btn-secondary">Lihat Detail</a>
-                  <a href="#!" class="btn-primary">Pesan Jadwal</a>
-                </div>
-              </div>
-            </div>
-            @empty
-              <div class="col-12 text-center py-5">
-                <x-empty-state 
-                  icon="bi bi-person-heart" 
-                  title="Belum Ada Data Dokter" 
-                  subtitle="Mohon maaf, saat ini kami sedang memperbarui daftar dokter kami. Silakan kembali lagi nanti."
-                />
-              </div>
-            @endforelse
-          </div>
-        </div> -->
-
         <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
           <a href="{{ route('doctor.index') }}" class="btn-view-all">
             Lihat Semua Dokter
@@ -86,7 +54,6 @@
     </section>
 
     <style>
-      /* Search Section Improvements */
       .find-a-doctor .search-section .search-form .search-input-group {
         display: flex;
         background: #fff;
@@ -109,12 +76,11 @@
         box-shadow: none !important;
         font-weight: 500;
         padding-left: 55px !important;
-        line-height: 55px; /* Center text vertically for inputs */
+        line-height: 55px;
         padding-top: 0;
         padding-bottom: 0;
       }
 
-      /* Select needs different vertical centering than input */
       .find-a-doctor .search-section .search-form .form-select {
         line-height: normal;
       }
@@ -165,7 +131,7 @@
           border-radius: 30px !important;
           background: #fff;
           width: 100%;
-          overflow: hidden; /* Ensure rounded corners are respected */
+          overflow: hidden;
         }
 
         .find-a-doctor .search-section .search-form .form-select {
@@ -189,11 +155,10 @@
         .find-a-doctor .search-section .search-form .input-wrapper i,
         .find-a-doctor .search-section .search-form .select-wrapper i {
           left: 20px;
-          display: block !important; /* Keep icons on mobile but positioned well */
+          display: block !important;
         }
       }
 
-      /* Fix select dropdown specifically */
       .find-a-doctor .search-section .search-form .select-wrapper select.form-select {
         color: #000000 !important;
         appearance: none;
@@ -206,11 +171,9 @@
   
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Emergency fix: if value is selected but not matching visual, force update
         const selectElements = document.querySelectorAll('.find-a-doctor select[name="specialization"]');
         selectElements.forEach(selectElement => {
           if (selectElement) {
-            // Ensure black color on load
             selectElement.style.setProperty('color', '#000000', 'important');
             selectElement.style.setProperty('background-color', '#ffffff', 'important');
           }

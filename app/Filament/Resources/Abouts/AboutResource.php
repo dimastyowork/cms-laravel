@@ -16,18 +16,23 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
 
 class AboutResource extends Resource
 {
+    use HasResourcePermission;
+
     protected static ?string $model = About::class;
+
+    protected static ?string $resourcePermission = 'sliders';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedFilm;
 
     protected static UnitEnum|string|null $navigationGroup = 'Konten Website';
     
-    protected static ?string $navigationLabel = 'Tentang Kami';
+    protected static ?string $navigationLabel = 'Slider';
 
-    protected static ?string $pluralModelLabel = 'Tentang Kami';
+    protected static ?string $pluralModelLabel = 'Slider';
     
     protected static ?int $navigationSort = 3;
 

@@ -16,11 +16,16 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
 use Illuminate\Database\Eloquent\Builder;
 
 class PostResource extends Resource
 {
+    use HasResourcePermission;
+
     protected static ?string $model = Post::class;
+
+    protected static ?string $resourcePermission = 'posts';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
 

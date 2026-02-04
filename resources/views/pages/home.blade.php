@@ -4,5 +4,4 @@
   <x-home.service-directory :services="$services" />
   <x-home.poliklinik :polikliniks="$polikliniks" :settings="$settings" />
   <x-home.doctor :doctors="$doctors" />
-  <!-- <x-home.cta :settings="$settings" /> -->
 </x-layouts.app>

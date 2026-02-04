@@ -9,18 +9,15 @@
   <meta name="description" content="{{ optional($settings)->description ?? '' }}">
   <meta name="keywords" content="">
 
-  <!-- Favicons -->
   <link href="{{ asset('favicon.ico') }}" rel="icon">
   <link href="{{ asset('favicon.ico') }}" rel="apple-touch-icon">
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
   <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
@@ -28,7 +25,6 @@
   <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
-  <!-- Main CSS File -->
   <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
   <link href="{{ asset('css/empty-states.css') }}" rel="stylesheet">
   <link href="{{ asset('css/doctors-carousel.css') }}" rel="stylesheet">
@@ -46,7 +42,6 @@
       }
     }
 
-    /* Topbar Button Styles */
     .topbar-btn {
       display: inline-flex;
       align-items: center;
@@ -89,7 +84,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Unified Scrolled Header CSS */
     .scrolled .header {
       padding: 0 !important;
       margin: 0 !important;
@@ -113,7 +107,7 @@
     }
 
     .scrolled .header .logo img {
-      max-height: 48px !important; /* Keep original height */
+      max-height: 48px !important;
     }
 
     @media (max-width: 991px) {
@@ -121,7 +115,7 @@
         padding: 5px 0 !important;
       }
       .scrolled .header .logo img {
-        max-height: 40px !important; /* Keep mobile height constant */
+        max-height: 40px !important;
       }
       .scrolled .mobile-nav-toggle {
         font-size: 28px !important;
@@ -133,7 +127,6 @@
       padding: 8px 15px;
     }
 
-    /* Footer Social Links */
     .footer-social-links .social-link {
       display: flex;
       align-items: center;
@@ -156,6 +149,7 @@
     .text-accent {
       color: var(--accent-color) !important;
     }
+
 
     /* Footer Elegance */
     .footer-title, .nav-column h6 {
@@ -263,7 +257,6 @@
         bottom: 85px !important; 
       }
 
-      /* Mobile Nav Menu Overrides for Elegance */
       .mobile-nav-active .navmenu {
         background: rgba(255, 255, 255, 0.98) !important;
         backdrop-filter: blur(15px) !important;
@@ -299,7 +292,6 @@
         }
       }
 
-      /* Staggered animation for menu items */
       .mobile-nav-active .navmenu ul li:nth-child(1) { animation-delay: 0.1s; }
       .mobile-nav-active .navmenu ul li:nth-child(2) { animation-delay: 0.15s; }
       .mobile-nav-active .navmenu ul li:nth-child(3) { animation-delay: 0.2s; }
@@ -343,12 +335,10 @@
         right: 25px !important;
       }
       
-      /* Hide topbar when mobile nav is active to keep it clean */
       .mobile-nav-active .topbar {
         display: none !important;
       }
 
-      /* Logo Image in Mobile Menu */
       .mobile-nav-active .navmenu::before {
         content: '';
         position: absolute;
@@ -363,7 +353,6 @@
         z-index: 10000;
       }
 
-      /* Fix clipping when scrolled */
       .mobile-nav-active, .mobile-nav-active #header {
         overflow: visible !important;
       }
@@ -382,14 +371,6 @@
       }
     }
   </style>
-
-  <!-- =======================================================
-  * Template Name: Clinic
-  * Template URL: https://bootstrapmade.com/clinic-bootstrap-template/
-  * Updated: Jul 23 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -418,15 +399,12 @@
           @if(optional($settings)->instagram)<a href="{{ $settings->instagram }}" class="instagram"><i class="bi bi-instagram"></i></a>@endif
         </div>
       </div>
-    </div><!-- End Top Bar -->
+    </div>
 
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
         <a href="{{ route('home') }}" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.webp" alt=""> -->
-          <!-- <h1 class="sitename">Clinic</h1> -->
           <img src="{{ optional($settings)->logo ? asset('storage/' . $settings->logo) : asset('logo-header.svg') }}" alt="Modern Healthcare Facility" class="img-fluid">
         </a>
 
@@ -465,6 +443,7 @@
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
 
       </div>
 
@@ -570,14 +549,11 @@
 
   </footer>
 
-  <!-- Scroll Top -->
   <a href="#!" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
@@ -585,13 +561,10 @@
   <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
   <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
-  <!-- Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
 
-  <!-- Doctors Carousel Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize Doctors Carousel Swiper
       const doctorsSwiper = new Swiper('#doctorsSwiper', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -610,7 +583,6 @@
         }
       });
 
-      // Initialize Departments Carousel Swiper
       const departmentsSwiper = new Swiper('#departmentsSwiper', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -631,7 +603,6 @@
     });
   </script>
 
-  <!-- Mobile Bottom Tab Navigation -->
   <div class="mobile-nav-tabs">
     <a href="{{ route('home') }}" class="nav-tab {{ request()->routeIs('home') ? 'active' : '' }}">
       <i class="bi bi-house-door{{ request()->routeIs('home') ? '-fill' : '' }}"></i>

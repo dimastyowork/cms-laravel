@@ -1,7 +1,6 @@
 <style>
-  /* Fix hero section to avoid navbar overlap */
   .hero.section {
-    padding-top: 140px !important; /* Adjust based on navbar height */
+    padding-top: 140px !important;
   }
   
   @media (max-width: 768px) {
@@ -84,7 +83,6 @@
           <div class="col-lg-6">
             <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
               @if($abouts && $abouts->count() > 0)
-                <!-- Image Slider -->
                 <div class="hero-image-slider">
                   @foreach($abouts as $index => $heroItem)
                     <div class="hero-image-slide {{ $index === 0 ? 'active' : '' }}" data-slide="{{ $index }}">

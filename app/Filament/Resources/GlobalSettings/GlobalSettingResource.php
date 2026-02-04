@@ -14,10 +14,15 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
 
 class GlobalSettingResource extends Resource
 {
+    use HasResourcePermission;
+
     protected static ?string $model = GlobalSetting::class;
+
+    protected static ?string $resourcePermission = 'global_settings';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
 

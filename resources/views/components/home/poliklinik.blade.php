@@ -59,13 +59,14 @@
           <div class="swiper-button-prev dep-prev"></div>
         </div>
 
-        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="700">
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="700">
           <a href="{{ route('polyclinic.index') }}" class="btn-view-all">
             Lihat Semua Poliklinik
             <i class="bi bi-arrow-right"></i>
           </a>
         </div>
 
+        @if(optional($settings)->emergency_phone)
         <div class="emergency-banner" data-aos="fade-up" data-aos-delay="400">
           <div class="row align-items-center">
             <div class="col-lg-8">
@@ -85,6 +86,7 @@
             </div>
           </div>
         </div>
+        @endif
 
       </div>
 

@@ -455,10 +455,12 @@
           </a>
           @endif
 
+          @if(optional($settings)->emergency_phone)
           <a href="tel:{{ optional($settings)->emergency_phone }}" class="topbar-btn igd-btn">
             <i class="bi bi-exclamation-triangle-fill"></i>
             <span>IGD: {{ optional($settings)->emergency_phone ?? '-' }}</span>
           </a>
+          @endif
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
           @if(optional($settings)->twitter)<a href="{{ $settings->twitter }}" class="twitter"><i class="bi bi-twitter-x"></i></a>@endif

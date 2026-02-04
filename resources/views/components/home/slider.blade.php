@@ -51,6 +51,7 @@
                 </p>
               @endif
 
+              @if(optional($settings)->emergency_phone)
               <div class="emergency-contact" data-aos="fade-right" data-aos-delay="700">
                 <div class="emergency-icon">
                   <i class="bi bi-telephone-fill"></i>
@@ -60,6 +61,7 @@
                   <strong><a href="tel:{{ optional($settings)->emergency_phone }}" class="text-dark">{{ optional($settings)->emergency_phone ?? '-' }}</a></strong>
                 </div>
               </div>
+              @endif
 
               @if($abouts && $abouts->count() > 1)
                 <!-- Slider Controls -->
@@ -80,7 +82,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="col-lg-6 mb-3 mb-lg-0">
             <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
               @if($abouts && $abouts->count() > 0)
                 <div class="hero-image-slider">
@@ -156,7 +158,7 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-        margin-top: 2rem;
+        margin-top: {{ optional($settings)->emergency_phone ? '2rem' : '1rem' }};
       }
 
       .slider-btn {

@@ -71,19 +71,24 @@
                   <div class="doctor-schedules">
                     @forelse($unit->schedules as $schedule)
                       <div class="doctor-item mb-4 pb-3 border-bottom last:border-0 last:pb-0">
-                        <div class="d-flex align-items-center mb-3">
-                          <img src="{{ $schedule->doctor->photo_url }}" alt="{{ $schedule->doctor->name }}" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
-                          <div>
-                            <h6 class="mb-0 fw-bold">
-                              <a href="{{ route('doctor.show', $schedule->doctor) }}" class="doctor-name-link">
-                                {{ $schedule->doctor->name }}
-                              </a>
-                            </h6>
-                            <small class="text-muted">{{ $schedule->doctor->specialization }}</small>
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                          <div class="d-flex align-items-center">
+                            <img src="{{ $schedule->doctor->photo_url }}" alt="{{ $schedule->doctor->name }}" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                            <div>
+                              <h6 class="mb-0 fw-bold">
+                                <a href="{{ route('doctor.show', $schedule->doctor) }}" class="doctor-name-link">
+                                  {{ $schedule->doctor->name }}
+                                </a>
+                              </h6>
+                              <small class="text-muted">{{ $schedule->doctor->specialization }}</small>
+                            </div>
                           </div>
+                          <a href="{{ route('doctor.show', $schedule->doctor) }}" class="btn btn-sm btn-outline-primary rounded-circle shadow-sm" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+                            <i class="bi bi-arrow-right"></i>
+                          </a>
                         </div>
 
-                        <div class="schedule-slots">
+                        <!-- <div class="schedule-slots">
                           @php
                             $dayMap = [
                               'Monday' => 'Senin',
@@ -113,7 +118,7 @@
                           @else
                             <div class="text-muted small">Belum ada jadwal detail</div>
                           @endif
-                        </div>
+                        </div> -->
                       </div>
                     @empty
                       <div class="text-center py-4">

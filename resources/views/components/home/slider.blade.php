@@ -58,7 +58,7 @@
                 </div>
                 <div class="emergency-info">
                   <small>Emergency Hotline</small>
-                  <strong>{{ optional($settings)->phone ?? '-' }}</strong>
+                  <strong><a href="tel:{{ optional($settings)->emergency_phone }}" class="text-dark">{{ optional($settings)->emergency_phone ?? '-' }}</a></strong>
                 </div>
               </div>
 

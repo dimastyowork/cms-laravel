@@ -1,4 +1,4 @@
-@props(['polikliniks'])
+@props(['polikliniks', 'settings'])
     <section id="featured-departments" class="featured-departments section">
 
       <div class="container section-title" data-aos="fade-up">
@@ -78,9 +78,9 @@
               </div>
             </div>
             <div class="col-lg-4 text-lg-end">
-              <a href="tel:+15551234567" class="emergency-btn">
+              <a href="tel:{{ optional($settings)->emergency_phone }}" class="emergency-btn">
                 <i class="bi bi-telephone-fill"></i>
-                Call Emergency: -
+                Call Emergency: {{ optional($settings)->emergency_phone ?? '-' }}
               </a>
             </div>
           </div>

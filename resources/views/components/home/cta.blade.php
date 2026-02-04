@@ -1,3 +1,4 @@
+@props(['settings'])
 <section id="call-to-action" class="call-to-action section light-background">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -87,9 +88,9 @@
 
             <div class="col-lg-4">
               <div class="contact-actions" data-aos="fade-up" data-aos-delay="300">
-                <a href="tel:5551234567" class="emergency-call">
+                <a href="tel:{{ optional($settings)->emergency_phone }}" class="emergency-call">
                   <i class="bi bi-telephone"></i>
-                  <span>(555) 123-4567</span>
+                  <span>{{ optional($settings)->emergency_phone ?? '-' }}</span>
                 </a>
                 <a href="contact.html" class="contact-link">Find Location</a>
               </div>

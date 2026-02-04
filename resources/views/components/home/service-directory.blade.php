@@ -84,6 +84,18 @@
         background-color: #f8fbff;
     }
 
+    /* Mobile responsive title and subtitle */
+    @media (max-width: 768px) {
+        .service-directory .section-title h2 {
+            font-size: 1.75rem !important;
+        }
+        
+        .service-directory .section-title p {
+            font-size: 0.95rem !important;
+            line-height: 1.5;
+        }
+    }
+
     .directory-card {
         background: #fff;
         padding: 30px;

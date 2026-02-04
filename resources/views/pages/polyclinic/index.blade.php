@@ -41,6 +41,26 @@
       <div class="mt-5 d-flex justify-content-center">
         {{ $polikliniks->links() }}
       </div>
+
+      <div class="emergency-banner mt-5" data-aos="fade-up" data-aos-delay="400">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <div class="emergency-content">
+              <h3>Layanan Darurat 24 Jam</h3>
+              <p>
+                Instalasi gawat darurat kami dilengkapi dengan teknologi modern dan didukung
+                oleh dokter spesialis yang siap memberikan pelayanan medis dengan cepat dan profesional.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a href="tel:{{ optional($settings)->emergency_phone }}" class="emergency-btn">
+              <i class="bi bi-telephone-fill"></i>
+              Call Emergency: {{ optional($settings)->emergency_phone ?? '-' }}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

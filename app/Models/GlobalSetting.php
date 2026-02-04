@@ -13,6 +13,7 @@ class GlobalSetting extends Model
         'description',
         'address',
         'phone',
+        'emergency_phone',
         'email',
         'facebook',
         'twitter',

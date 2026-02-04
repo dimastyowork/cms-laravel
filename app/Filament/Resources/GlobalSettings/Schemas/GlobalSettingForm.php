@@ -35,6 +35,11 @@ class GlobalSettingForm
                                 ->email(),
 
                             TextInput::make('phone')
+                                ->label('Nomor Telepon Rumah Sakit')
+                                ->tel(),
+
+                            TextInput::make('emergency_phone')
+                                ->label('Nomor Telepon Darurat (IGD)')
                                 ->tel(),
 
                             TextInput::make('address')

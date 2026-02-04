@@ -2,7 +2,7 @@
   <x-home.slider :about="$about" :abouts="$abouts" :settings="$settings" />
   <x-home.about :about="$about" />
   <x-home.service-directory :services="$services" />
-  <x-home.poliklinik :polikliniks="$polikliniks" />
+  <x-home.poliklinik :polikliniks="$polikliniks" :settings="$settings" />
   <x-home.doctor :doctors="$doctors" />
-  <!-- <x-home.cta /> -->
+  <!-- <x-home.cta :settings="$settings" /> -->
 </x-layouts.app>

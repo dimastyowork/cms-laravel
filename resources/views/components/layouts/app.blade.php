@@ -430,6 +430,32 @@
         position: static !important;
       }
     }
+
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      overflow: hidden;
+      background: #fff;
+      transition: all 0.6s ease-out;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-logo {
+      width: 30px;
+      height: auto;
+      animation: pulsate 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulsate {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
   </style>
 </head>
 
@@ -621,7 +647,9 @@
   <a href="#!" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader"></div>
+  <div id="preloader">
+    <img src="{{ asset('logo-title.svg') }}" alt="Logo RS Asa Bunda" class="loader-logo">
+  </div>
 
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>

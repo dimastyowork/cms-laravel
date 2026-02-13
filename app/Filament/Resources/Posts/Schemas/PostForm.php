@@ -24,7 +24,7 @@ class PostForm
                 TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
-                    ->unique(ignoreRecord: true),
+                    ->unique(table: 'posts', column: 'slug', ignoreRecord: true),
                 Select::make('category')
                     ->options(fn () => \App\Models\PostCategory::pluck('name', 'slug')->toArray())
                     ->searchable()
@@ -36,7 +36,7 @@ class PostForm
                             ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         TextInput::make('slug')
                             ->required()
-                            ->unique('post_categories', 'slug'),
+                            ->unique(table: 'post_categories', column: 'slug', ignoreRecord: false),
                     ])
                     ->createOptionUsing(function (array $data): string {
                         return \App\Models\PostCategory::create($data)->slug;

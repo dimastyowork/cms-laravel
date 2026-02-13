@@ -49,7 +49,7 @@ class PostCategoryResource extends Resource
                     ->afterStateUpdated(fn (string $operation, $state, $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
                 TextInput::make('slug')
                     ->required()
-                    ->unique(ignoreRecord: true),
+                    ->unique(table: 'post_categories', column: 'slug', ignoreRecord: true),
             ]);
     }
 

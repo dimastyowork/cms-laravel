@@ -15,10 +15,10 @@ class PostCategorySeeder extends Seeder
     {
         $categories = [
             'Promo',
-            'Announcement',
-            'Profile',
-            'Service',
-            'Education',
+            'Pengumuman',
+            'Profil',
+            'Layanan',
+            'Edukasi',
         ];
 
         foreach ($categories as $category) {

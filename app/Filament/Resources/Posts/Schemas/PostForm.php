@@ -35,13 +35,15 @@ class PostForm
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         TextInput::make('slug')
-                            ->required(),
+                            ->required(), // Hilangkan all automatic validation di sini untuk stop error SQL
                     ])
                     ->createOptionUsing(function (array $data): string {
-                        // Cek manual di sini untuk menghindari bug SQL PostgreSQL
-                        if (\App\Models\PostCategory::where('slug', $data['slug'])->exists()) {
+                        // Cek manual di sini. Jika ada duplikat, tampilkan pesan error yang ramah.
+                        $existing = \App\Models\PostCategory::where('slug', $data['slug'])->first();
+                        if ($existing) {
                             throw \Illuminate\Validation\ValidationException::withMessages([
-                                'slug' => 'Kategori ini sudah ada.',
+                                'name' => 'Kategori ini sudah ada di sistem.',
+                                'slug' => 'Kategori ini sudah ada di sistem.',
                             ]);
                         }
                         

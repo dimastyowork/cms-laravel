@@ -36,7 +36,7 @@ class PostForm
                             ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         TextInput::make('slug')
                             ->required()
-                            ->unique(table: 'post_categories', column: 'slug', ignoreRecord: false),
+                            ->rules(['unique:post_categories,slug']),
                     ])
                     ->createOptionUsing(function (array $data): string {
                         return \App\Models\PostCategory::create($data)->slug;

@@ -20,20 +20,20 @@ class PostForm
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn (string $operation, $state, $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                    ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                 TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
                 Select::make('category')
-                    ->options(\App\Models\PostCategory::pluck('name', 'slug'))
+                    ->options(fn () => \App\Models\PostCategory::pluck('name', 'slug')->toArray())
                     ->searchable()
                     ->required()
                     ->createOptionForm([
                         TextInput::make('name')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+                            ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         TextInput::make('slug')
                             ->required()
                             ->unique('post_categories', 'slug'),

@@ -35,10 +35,16 @@ class PostForm
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         TextInput::make('slug')
-                            ->required()
-                            ->rules(['unique:post_categories,slug']),
+                            ->required(),
                     ])
                     ->createOptionUsing(function (array $data): string {
+                        // Cek manual di sini untuk menghindari bug SQL PostgreSQL
+                        if (\App\Models\PostCategory::where('slug', $data['slug'])->exists()) {
+                            throw \Illuminate\Validation\ValidationException::withMessages([
+                                'slug' => 'Kategori ini sudah ada.',
+                            ]);
+                        }
+                        
                         return \App\Models\PostCategory::create($data)->slug;
                     }),
                 RichEditor::make('content')

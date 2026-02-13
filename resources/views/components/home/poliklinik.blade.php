@@ -34,7 +34,7 @@
                         </a>
                       </div>
                     </div>
-                  </div><!-- End Specialty Card -->
+                  </div>
                   @endforeach
                 </div>
               </div>
@@ -59,12 +59,14 @@
           <div class="swiper-button-prev dep-prev"></div>
         </div>
 
+        @if($polikliniks->count() > 0)
         <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="700">
           <a href="{{ route('polyclinic.index') }}" class="btn-view-all">
             Lihat Semua Poliklinik
             <i class="bi bi-arrow-right"></i>
           </a>
         </div>
+        @endif
 
         @if(optional($settings)->emergency_phone)
         <div class="emergency-banner" data-aos="fade-up" data-aos-delay="400">

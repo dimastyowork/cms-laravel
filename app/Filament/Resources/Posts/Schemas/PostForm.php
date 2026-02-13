@@ -26,13 +26,21 @@ class PostForm
                     ->maxLength(255)
                     ->unique(ignoreRecord: true),
                 Select::make('category')
-                    ->options([
-                        'promo' => 'Promo',
-                        'announcement' => 'Announcement',
-                        'profile' => 'Profile',
-                        'service' => 'Service',
+                    ->options(\App\Models\PostCategory::pluck('name', 'slug'))
+                    ->searchable()
+                    ->required()
+                    ->createOptionForm([
+                        TextInput::make('name')
+                            ->required()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn ($state, $set) => $set('slug', Str::slug($state))),
+                        TextInput::make('slug')
+                            ->required()
+                            ->unique('post_categories', 'slug'),
                     ])
-                    ->required(),
+                    ->createOptionUsing(function (array $data): string {
+                        return \App\Models\PostCategory::create($data)->slug;
+                    }),
                 RichEditor::make('content')
                     ->required()
                     ->columnSpanFull()

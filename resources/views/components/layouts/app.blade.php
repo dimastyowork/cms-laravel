@@ -466,13 +466,18 @@
     <div class="topbar d-flex align-items-center dark-background">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center gap-2 gap-md-3">
-          <i class="bi bi-envelope d-none d-lg-flex align-items-center"><a
-              href="mailto:{{ optional($settings)->email ?? '-' }}">{{ optional($settings)->email ?? '-' }}</a></i>
+          @if(optional($settings)->email)
+          <i class="bi bi-envelope d-none d-lg-flex align-items-center">
+            <a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a>
+          </i>
+          @endif
           
+          @if(optional($settings)->phone)
           <a href="tel:{{ optional($settings)->phone }}" class="topbar-btn rs-btn">
             <i class="bi bi-telephone-fill"></i>
-            <span>{{ optional($settings)->phone ?? '-' }}</span>
+            <span>{{ $settings->phone }}</span>
           </a>
+          @endif
 
           @if(optional($settings)->whatsapp)
           <a href="https://wa.me/{{ preg_replace('/^0/', '62', preg_replace('/[^0-9]/', '', $settings->whatsapp)) }}" class="topbar-btn wa-btn" target="_blank">
@@ -583,14 +588,18 @@
                 <i class="bi bi-geo-alt text-accent me-2"></i>
                 <span>{{ optional($settings)->address ?? 'Jl. Ovensari Raya No. 30, Kadilangu, Baki, Sukoharjo.' }}</span>
               </div>
+              @if(optional($settings)->phone)
               <div class="contact-item mb-2">
                 <i class="bi bi-telephone text-accent me-2"></i>
-                <span>RS: <a href="tel:{{ optional($settings)->phone }}">{{ optional($settings)->phone ?? '0271 6007000' }}</a></span>
+                <span>RS: <a href="tel:{{ optional($settings)->phone }}">{{ $settings->phone }}</a></span>
               </div>
+              @endif
+              @if(optional($settings)->emergency_phone)
               <div class="contact-item text-danger mb-2">
                 <i class="bi bi-exclamation-triangle me-2"></i>
-                <span>IGD: <a href="tel:{{ optional($settings)->emergency_phone }}" class="text-danger">{{ optional($settings)->emergency_phone ?? '-' }}</a></span>
+                <span>IGD: <a href="tel:{{ optional($settings)->emergency_phone }}" class="text-danger">{{ $settings->emergency_phone }}</a></span>
               </div>
+              @endif
               <div class="contact-item">
                 <i class="bi bi-envelope text-accent me-2"></i>
                 <span>{{ optional($settings)->email ?? 'rsasabunda@gmail.com' }}</span>

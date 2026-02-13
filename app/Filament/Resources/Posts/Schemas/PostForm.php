@@ -33,7 +33,7 @@ class PostForm
                         TextInput::make('name')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn ($state, $set) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         TextInput::make('slug')
                             ->required()
                             ->unique('post_categories', 'slug'),

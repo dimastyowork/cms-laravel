@@ -15,13 +15,27 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use App\Traits\HasResourcePermission;
+use UnitEnum;
 use Illuminate\Support\Str;
 
 class PostCategoryResource extends Resource
 {
+    use HasResourcePermission;
+    
     protected static ?string $model = PostCategory::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $resourcePermission = 'posts';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
+
+    protected static UnitEnum|string|null $navigationGroup = 'Konten Website';
+
+    protected static ?string $navigationLabel = 'Kategori Berita';
+
+    protected static ?string $pluralModelLabel = 'Kategori Berita';
+
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $recordTitleAttribute = 'name';
 

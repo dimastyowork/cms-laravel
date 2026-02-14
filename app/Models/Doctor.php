@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Doctor extends Model
 {
@@ -23,6 +24,8 @@ class Doctor extends Model
         'sort_order',
     ];
 
+    protected $appends = ['photo_url'];
+
     /**
      * Get the doctor's photo with default profile image fallback
      */
@@ -37,14 +40,16 @@ class Doctor extends Model
     /**
      * Get the photo URL with default fallback
      */
-    public function getPhotoUrlAttribute(): string
+    protected function photoUrl(): Attribute
     {
-        // Jika ada foto di database, gunakan itu
-        if (!empty($this->photo)) {
-            return asset('storage/' . $this->photo);
-        }
-        // Jika tidak ada, gunakan default image
-        return asset('assets/img/person/default-profile.jpg');
+        return Attribute::make(
+            get: function () {
+                if (!empty($this->photo)) {
+                    return asset('storage/' . $this->photo);
+                }
+                return asset('assets/img/person/default-profile.jpg');
+            }
+        );
     }
 
     public function schedules(): HasMany

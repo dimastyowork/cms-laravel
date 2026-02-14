@@ -15,11 +15,15 @@ class DoctorController extends Controller
         $query = Doctor::query()->where('is_active', true);
 
         if ($request->has('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+            $searchTerm = strtolower(trim($request->search));
+            $query->where(function($q) use ($searchTerm) {
+                $q->whereRaw('LOWER(name) LIKE ?', ['%' . $searchTerm . '%'])
+                  ->orWhereRaw('LOWER(specialization) LIKE ?', ['%' . $searchTerm . '%']);
+            });
         }
 
         if ($request->has('specialization') && $request->specialization != '') {
-            $query->where('specialization', $request->specialization);
+            $query->whereRaw('LOWER(specialization) = ?', [strtolower(trim($request->specialization))]);
         }
 
         $doctors = $query->orderBy('sort_order', 'asc')

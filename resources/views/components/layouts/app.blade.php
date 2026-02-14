@@ -430,6 +430,245 @@
         position: static !important;
       }
     }
+
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      line-height: 1;
+      margin-top: -16px;
+    }
+
+    .search-form {
+      position: relative;
+      display: flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .search-form .input-group {
+      width: 280px;
+      transition: width 0.3s ease;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-form .input-group:focus-within {
+      width: 320px;
+    }
+
+    .search-input {
+      background-color: #ffffff;
+      border: 1px solid rgba(var(--accent-color-rgb), 0.1);
+      border-radius: 50px 0 0 50px;
+      padding: 8px 16px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      height: 40px;
+      line-height: 1.5;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 4px 20px rgba(var(--accent-color-rgb), 0.15);
+      outline: none;
+      background-color: #fff;
+    }
+
+    .btn-search {
+      background: var(--accent-color);
+      color: white;
+      border: 1px solid var(--accent-color);
+      border-radius: 0 50px 50px 0;
+      padding: 8px 20px;
+      transition: all 0.3s ease;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      box-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+    }
+
+    .btn-search:hover {
+      background: color-mix(in srgb, var(--accent-color), black 10%);
+      border-color: color-mix(in srgb, var(--accent-color), black 10%);
+      transform: scale(1.05);
+    }
+
+    .btn-search i {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .btn-search-mobile {
+      background: transparent;
+      border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+      color: var(--accent-color);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .btn-search-mobile:hover {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    .scrolled .search-input {
+      padding: 6px 14px;
+      font-size: 13px;
+      height: 36px;
+    }
+
+    .scrolled .btn-search {
+      padding: 6px 16px;
+      height: 36px;
+    }
+
+    .scrolled .search-form .input-group {
+      width: 260px;
+    }
+
+    .scrolled .search-form .input-group:focus-within {
+      width: 300px;
+    }
+
+    @media (max-width: 1199px) {
+      .search-form {
+        display: none !important;
+      }
+      
+      .btn-search-mobile {
+        display: block;
+      }
+      .btn-search-mobile {
+        display: block;
+      }
+    }
+
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-top: 10px;
+      padding: 10px 0;
+      z-index: 1000;
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid rgba(0,0,0,0.05);
+      width: 320px; 
+    }
+
+    .suggestion-item {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: var(--heading-color);
+      transition: all 0.2s ease;
+      gap: 12px;
+    }
+
+    .suggestion-item:hover {
+      background-color: rgba(var(--accent-color-rgb), 0.05);
+      color: var(--accent-color);
+    }
+
+    .suggestion-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .suggestion-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .suggestion-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .suggestion-subtitle {
+      font-size: 12px;
+      color: #888;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .suggestion-category {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #f8f9fa;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #6c757d;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .no-suggestions {
+      padding: 15px;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .scrolled .search-suggestions {
+      width: 300px;
+    }
+
+    #searchModal .modal-content {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+    }
+
+    #searchModal .input-group-lg .form-control {
+      border-radius: 50px 0 0 50px;
+      border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+      padding: 12px 24px;
+    }
+
+    #searchModal .input-group-lg .btn {
+      border-radius: 0 50px 50px 0;
+      padding: 12px 32px;
+    }
+
+    #searchModal .badge {
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 500;
+      border: 1px solid #dee2e6;
+      transition: all 0.3s ease;
+    }
+
+    #searchModal .badge:hover {
+      background: var(--accent-color) !important;
+      color: white !important;
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 
@@ -513,6 +752,21 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
+        <div class="search-wrapper">
+          <form action="{{ route('search') }}" method="GET" class="search-form d-none d-xl-flex">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control search-input" placeholder="Cari dokter, poli, berita..." value="{{ request('q') }}" autocomplete="off">
+              <button type="submit" class="btn btn-search">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div id="search-suggestions" class="search-suggestions d-none"></div>
+          </form>
+          
+          <button type="button" class="btn-search-mobile d-xl-none" data-bs-toggle="modal" data-bs-target="#searchModal">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
 
       </div>
 
@@ -634,6 +888,131 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.querySelector('.search-input');
+      const suggestionsBox = document.getElementById('search-suggestions');
+      let timeoutId;
+
+      if (searchInput && suggestionsBox) {
+        searchInput.addEventListener('input', function() {
+          const query = this.value.trim();
+
+          clearTimeout(timeoutId);
+
+          if (query.length < 2) {
+            suggestionsBox.classList.add('d-none');
+            suggestionsBox.innerHTML = '';
+            return;
+          }
+
+          timeoutId = setTimeout(() => {
+            fetchSuggestions(query);
+          }, 400);
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+            suggestionsBox.classList.add('d-none');
+          }
+        });
+
+        searchInput.addEventListener('focus', function() {
+          if (this.value.trim().length >= 2 && suggestionsBox.innerHTML !== '') {
+            suggestionsBox.classList.remove('d-none');
+          }
+        });
+      }
+
+      function fetchSuggestions(query) {
+        fetch(`{{ route('search.suggestions') }}?q=${encodeURIComponent(query)}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.length > 0) {
+              renderSuggestions(data);
+              suggestionsBox.classList.remove('d-none');
+            } else {
+              suggestionsBox.innerHTML = '<div class="no-suggestions">Tidak ada hasil ditemukan</div>';
+              suggestionsBox.classList.remove('d-none');
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching suggestions:', error);
+          });
+      }
+
+      function renderSuggestions(data) {
+        let html = '';
+        data.forEach(item => {
+          html += `
+            <a href="${item.url}" class="suggestion-item">
+              <img src="${item.image || '{{ asset("assets/img/person/default-profile.jpg") }}'}" alt="" class="suggestion-image">
+              <div class="suggestion-content">
+                <div class="suggestion-title">${item.label}</div>
+                ${item.sublabel ? `<div class="suggestion-subtitle">${item.sublabel}</div>` : ''}
+              </div>
+              <span class="suggestion-category">${item.category}</span>
+            </a>
+          `;
+        });
+        suggestionsBox.innerHTML = html;
+      }
+      
+      const searchPlaceholderText = [
+        "Cari 'Dokter ...'", 
+        "Cari 'Poliklinik  ...'", 
+        "Cari 'Jadwal Dokter ...'",
+        "Cari 'Berita Kesehatan ...'",
+        "Cari 'Layanan IGD ...'"
+      ];
+      
+      let placeholderIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typeSpeed = 100;
+      
+      function typeWriter() {
+        if (document.activeElement === searchInput || searchInput.value.length > 0) {
+           return;
+        }
+
+        const currentText = searchPlaceholderText[placeholderIndex];
+        
+        if (isDeleting) {
+          searchInput.setAttribute('placeholder', currentText.substring(0, charIndex - 1));
+          charIndex--;
+          typeSpeed = 50;
+        } else {
+          searchInput.setAttribute('placeholder', currentText.substring(0, charIndex + 1));
+          charIndex++;
+          typeSpeed = 100;
+        }
+        
+        if (!isDeleting && charIndex === currentText.length) {
+          isDeleting = true;
+          typeSpeed = 2000;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          placeholderIndex = (placeholderIndex + 1) % searchPlaceholderText.length;
+          typeSpeed = 500;
+        }
+        
+        setTimeout(typeWriter, typeSpeed);
+      }
+      
+      if (searchInput) {
+        setTimeout(typeWriter, 1000);
+        
+        searchInput.addEventListener('blur', function() {
+          if (this.value.length === 0) {
+            isDeleting = false;
+            setTimeout(typeWriter, 500);
+          }
+        });
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
       const doctorsSwiper = new Swiper('#doctorsSwiper', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -671,6 +1050,39 @@
       });
     });
   </script>
+
+  <!-- Mobile Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold" id="searchModalLabel">
+            <i class="bi bi-search me-2"></i>Pencarian
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-0">
+          <form action="{{ route('search') }}" method="GET">
+            <div class="input-group input-group-lg mb-3">
+              <input type="text" name="q" class="form-control" placeholder="Cari dokter, poli, berita..." value="{{ request('q') }}" autofocus autocomplete="off">
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i> Cari
+              </button>
+            </div>
+          </form>
+          <div class="search-suggestions mt-4">
+            <p class="text-muted small mb-2">Saran Pencarian:</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="{{ route('search') }}?q=dokter" class="badge bg-light text-dark text-decoration-none">Dokter</a>
+              <a href="{{ route('search') }}?q=poliklinik" class="badge bg-light text-dark text-decoration-none">Poliklinik</a>
+              <a href="{{ route('search') }}?q=jadwal" class="badge bg-light text-dark text-decoration-none">Jadwal</a>
+              <a href="{{ route('search') }}?q=layanan" class="badge bg-light text-dark text-decoration-none">Layanan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="mobile-nav-tabs">
     <a href="{{ route('home') }}" class="nav-tab {{ request()->routeIs('home') ? 'active' : '' }}">

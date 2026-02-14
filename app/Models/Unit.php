@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Str;
 
 class Unit extends Model
@@ -20,6 +21,8 @@ class Unit extends Model
         'is_active',
         'sort_order',
     ];
+
+    protected $appends = ['image_url'];
 
     protected function casts(): array
     {
@@ -55,15 +58,17 @@ class Unit extends Model
     /**
      * Get the image URL attribute.
      * Returns the image from storage if exists, otherwise returns default image.
-     *
-     * @return string
      */
-    public function getImageUrlAttribute(): string
+    protected function imageUrl(): Attribute
     {
-        if ($this->image && file_exists(storage_path('app/public/' . $this->image))) {
-            return asset('storage/' . $this->image);
-        }
-        
-        return asset('assets/img/coming-soon.png');
+        return Attribute::make(
+            get: function () {
+                if ($this->image && file_exists(storage_path('app/public/' . $this->image))) {
+                    return asset('storage/' . $this->image);
+                }
+                
+                return asset('assets/img/coming-soon.png');
+            }
+        );
     }
 }

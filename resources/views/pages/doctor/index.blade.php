@@ -83,8 +83,10 @@
         @endforelse
       </div>
 
-      <div class="mt-5 d-flex justify-content-center">
-        {{ $doctors->links() }}
+      <div class="doctor-pagination-section mt-5 mb-5">
+        <div class="d-flex justify-content-center">
+          {{ $doctors->links() }}
+        </div>
       </div>
     </div>
   </section>
@@ -475,6 +477,30 @@
       background-repeat: no-repeat;
       background-position: right 1.5rem center;
       background-size: 16px 12px;
+    }
+
+    .doctor-pagination-section {
+      margin-top: 80px !important;
+      margin-bottom: 60px !important;
+      padding-top: 30px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .doctor-pagination-section nav > div:first-child {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .doctor-pagination-section nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .doctor-pagination-section nav > div:first-child {
+        margin-bottom: 0;
+      }
     }
   </style>
 

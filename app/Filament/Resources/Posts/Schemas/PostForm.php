@@ -20,19 +20,35 @@ class PostForm
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn (string $operation, $state, $set) => $operation === 'create' ? $set('slug', Str::slug($state)) : null),
+                    ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
                 TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
-                    ->unique(ignoreRecord: true),
+                    ->unique(table: 'posts', column: 'slug', ignoreRecord: true),
                 Select::make('category')
-                    ->options([
-                        'promo' => 'Promo',
-                        'announcement' => 'Announcement',
-                        'profile' => 'Profile',
-                        'service' => 'Service',
+                    ->options(fn () => \App\Models\PostCategory::pluck('name', 'slug')->toArray())
+                    ->searchable()
+                    ->required()
+                    ->createOptionForm([
+                        TextInput::make('name')
+                            ->required()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn ($state, $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+                        TextInput::make('slug')
+                            ->required(), // Hilangkan all automatic validation di sini untuk stop error SQL
                     ])
-                    ->required(),
+                    ->createOptionUsing(function (array $data): string {
+                        // Cek manual di sini. Jika ada duplikat, tampilkan pesan error yang ramah.
+                        $existing = \App\Models\PostCategory::where('slug', $data['slug'])->first();
+                        if ($existing) {
+                            throw \Illuminate\Validation\ValidationException::withMessages([
+                                'name' => 'Kategori ini sudah ada di sistem.',
+                                'slug' => 'Kategori ini sudah ada di sistem.',
+                            ]);
+                        }
+                        
+                        return \App\Models\PostCategory::create($data)->slug;
+                    }),
                 RichEditor::make('content')
                     ->required()
                     ->columnSpanFull()

@@ -21,11 +21,11 @@
                 <p>{{ $poliklinik->getExcerpt(120) }}</p>
                 <div class="mt-auto">
                   <a href="{{ route('polyclinic.show', $poliklinik->slug) }}" class="specialty-link">
-                    Explore {{ $poliklinik->name }} <i class="bi bi-arrow-right"></i>
+                    Lihat {{ $poliklinik->name }} <i class="bi bi-arrow-right"></i>
                   </a>
                 </div>
               </div>
-            </div><!-- End Specialty Card -->
+            </div>
           </div>
         @empty
           <div class="col-12">

@@ -1,11 +1,103 @@
 <style>
   .hero.section {
-    padding-top: 140px !important;
+    padding-top: 130px !important;
+    padding-bottom: 60px !important;
   }
   
-  @media (max-width: 768px) {
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 992px) {
+    .hero-content {
+      margin-top: -60px !important;
+    }
+  }
+
+  @media (max-width: 991px) {
     .hero.section {
       padding-top: 80px !important;
+      padding-bottom: 0px !important;
+    }
+    
+    .hero-visual {
+      height: auto !important;
+      margin-top: 0 !important;
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .main-image {
+      height: auto !important;
+      margin-bottom: 5px !important;
+    }
+    
+    .hero-content {
+      text-align: left;
+      margin-top: 0 !important;
+    }
+    
+    .trust-badges {
+      justify-content: flex-start;
+      margin-bottom: 10px !important;
+    }
+
+    .trust-badges .badge-item {
+      font-size: 11px;
+      padding: 3px 8px;
+    }
+    
+    .hero-text-slide h1 {
+      font-size: 1.8rem !important;
+      line-height: 1.2 !important;
+      margin: 10px 0 !important;
+    }
+    
+    .hero-description {
+      font-size: 0.9rem !important;
+      margin-bottom: 15px !important;
+    }
+    
+    .emergency-contact {
+      justify-content: flex-start;
+      margin-top: 15px !important;
+    }
+    
+    .hero-slider-controls {
+      justify-content: flex-start;
+      margin-top: 15px !important;
+    }
+
+    .background-elements {
+      display: none !important;
+    }
+    
+    .main-image img {
+      max-height: 280px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: var(--border-radius-lg);
+    }
+
+    /* Pull up the text column to close the gap */
+    .row.flex-column-reverse > .col-lg-6:first-child {
+      margin-top: -20px !important;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .hero.section {
+      padding-top: 70px !important;
+    }
+    
+    .hero-text-slide h1 {
+      font-size: 1.6rem !important;
+    }
+    
+    .main-image img {
+      max-height: 240px;
     }
   }
 </style>
@@ -82,7 +174,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="col-lg-6 mb-1 mb-lg-0">
             <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
               @if($abouts && $abouts->count() > 0)
                 <div class="hero-image-slider">
